@@ -38,12 +38,12 @@ List::List() {
 *** RETURN : None ***
 ******************************************************/
 List::List(const List &other) {
-  front = nullptr;
-  NodePtr current = other.front;
-  while (current != nullptr) {
-    add(current->element);
-    current = current->next;
-  }
+    front = nullptr;
+    NodePtr current = other.front;
+    while (current != nullptr) {
+        add(current->element);
+        current = current->next;
+    }
 }
 
 /******************************************************************** 
@@ -56,11 +56,11 @@ List::List(const List &other) {
 *** RETURN : None *** 
 ********************************************************************/ 
 List::~List() {
-  while (front != nullptr) {
-    NodePtr temp = front;
-    front = front->next;
-    delete temp;
-  }
+    while (front != nullptr) {
+        NodePtr temp = front;
+        front = front->next;
+        delete temp;
+    }
 }
 
 
@@ -74,10 +74,10 @@ List::~List() {
 *** RETURN : None                                                                                               *** 
 ********************************************************************/ 
 void List::add(const Element e) {
-  NodePtr newNode = new Node;
-  newNode->element = e;
-  newNode->next = front;
-  front = newNode;
+    NodePtr newNode = new Node;
+    newNode->element = e;
+    newNode->next = front;
+    front = newNode;
 }
 
 
