@@ -9,10 +9,14 @@
 *** DESCRIPTION : <general english description of the abstract data type> *** 
 *** <including supporting operations> *** 
 ********************************************************************/ 
+
 #ifndef _MYADT_H // myadt.h 
 #define _MYADT_H 
 // other preprocessor directives 
+
+// global declarations and definitions – constants, data types, functions
 // exportable declarations and definitions – constants, data types 
+
 class MyClass 
 { 
  public: // exportable
