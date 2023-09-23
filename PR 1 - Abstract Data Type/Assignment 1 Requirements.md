@@ -3,13 +3,9 @@
 Owner: John Akujobi
 Type: Homework
 Created time: June 17, 2023 8:58 PM
-Status: Not started
-
-Here is the Assignment 1 document formatted in Markdown:
+Status: Started
 
 CSc 300
-
-Assignment #1
 
 Gamradt
 
@@ -20,12 +16,12 @@ Due: 09-25-23 (Late: 10-02-23)
 - Use an appropriate set of C++ header/implementation files as discussed in class
 - List is implemented as a Single-Linked-List
 - List consists of 0 or more Element values
-    - Element is an exportable standard primitive float data type
-        - Element is managed using dynamically allocated nodes – Node
-        - See C++ Pointers under D2L Lecture Notes
-    - Node consists of two fields:
-        - element
-        - next
+  - Element is an exportable standard primitive float data type
+    - Element is managed using dynamically allocated nodes – Node
+    - See C++ Pointers under D2L Lecture Notes
+  - Node consists of two fields:
+    - element
+    - next
 
 The List ADT must define and implement the following data types and operations
 
@@ -36,23 +32,22 @@ The List ADT must define and implement the following data types and operations
 
 - List default constructor function – creates an initialized empty list
 - List copy constructor – creates a duplicate copy of an existing list
-reuse the add method when populating the new list
+  reuse the add method when populating the new list
 - ~List destructor function – removes all elements from the list
-list instance state before going out of scope – initialized empty list
+- list instance state before going out of scope – initialized empty list
 - add inserts a new element to the list in descending order
 - allocation fails provide user feedback
 - remove removes an existing element from the list
-not found provide user feedback
+  not found provide user feedback
 - view displays the contents of the list from the front of the list to the end of the list
-view function uses a non-destructive iterative implementation
+  view function uses a non-destructive iterative implementation
 
 ### User-Defined Data Types:
 
-Element
-Node
-
-NodePtr
-List
+- Element
+- Node
+- NodePtr
+- List
 
 ### Required Output Format: (view)
 
@@ -100,11 +95,11 @@ private: // non-exportable
 
 ### List ADT include sequence: // Never include .cpp files
 
-main.cpp
+- main.cpp
 
-List.h
+- List.h
 
-List.cpp
+- List.cpp
 
 ### List ADT incremental building sequence: // Using make
 
@@ -115,9 +110,9 @@ List.cpp
 Make sure that you completely document the header/implementation files.
 
 - The header (.h) file tells the user exactly how to use your ADT
-    - General descriptions only – do not include implementation details
+  - General descriptions only – do not include implementation details
 - The implementation file (.cpp) tells the implementer/programmer exactly how the ADT works
-    - Detailed descriptions – include implementation details
+  - Detailed descriptions – include implementation details
 - See Documentation Requirements – D2L Handouts Folder
 
 I will write a test program that will include your List ADT so all header/implementation files tested must use common names. You MUST use:
