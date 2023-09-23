@@ -6,7 +6,7 @@
 *** DUE DATE : 09-25-23                                           *** 
 *** INSTRUCTOR : GAMRADT                                          *** 
 *********************************************************************
-*** DESCRIPTION : <detailed english description of the current assignment> *** 
+*** DESCRIPTION : This program implements a List ADT in C++ using a linked list structure. The List supports core operations like add, remove, and traverse with proper encapsulation and abstraction. *** 
 ********************************************************************/ 
 
 // preprocessor directives 
@@ -46,9 +46,11 @@ int main() {
 
     // get the size of the list
     cout << "List size: " << myList.size() << endl;
+    // I added this to easily check the size of the list and to confirm that the remove function works
 
     // clear the list
     myList.clear();
+    // I added this to easily reset the list and clear it up for the next test
 
     // print the list again
     cout << "List contents after clearing: ";
