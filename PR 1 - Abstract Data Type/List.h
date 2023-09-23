@@ -10,35 +10,14 @@
 *** <including supporting operations> *** 
 ********************************************************************/ 
 
-#ifndef _MYADT_H // myadt.h 
-#define _MYADT_H 
 // other preprocessor directives 
 
 // global declarations and definitions – constants, data types, functions
 // exportable declarations and definitions – constants, data types 
 
-class MyClass 
-{ 
- public: // exportable
-/******************************************************************** 
-*** FUNCTION <name of function> *** 
-********************************************************************* 
-*** DESCRIPTION : <general english description of the function> *** 
-*** INPUT ARGS : <list of all input arguments> *** 
-*** OUTPUT ARGS : <list of all output arguments> *** 
-*** IN/OUT ARGS : <list of all input/output arguments> *** 
-*** RETURN : <return type and return value> *** 
-********************************************************************/ 
-ReturnType exportableFunction( <argument declarations> ); 
- private: // non-exportable
-// No Documentation 
- ReturnType nonExportableFunction( <argument declarations> ); 
- // all other non-exportable members – constants, types, data 
-}; 
-#endif 
-//Note: 
-//• a separate function description block is required for each exportable function declaration. 
 
+
+// Implementation Files (.cpp)
 #ifndef _LIST_H // Guard – start
 #define _LIST_H
 
@@ -46,17 +25,20 @@ typedef float Element; // typedef <existing type> <new type>
 // basic form of generic programming
 
 class List {
-public: // exportable
-  // General description of each of the ADT operations/methods/functions – exportable operations only
-    List();
-    List( const List & ); // reuse add
-    ~List();
-    void add(const Element );
-    void remove(const Element );
-    void view() const;
+  public: // exportable
+    // General description of each of the ADT operations/methods/functions – exportable operations only
+      List(); // constructor
+      List( const List & ); // copy constructor
+      ~List(); // destructor
+      void add(const Element ); // add an element to the list
+      void remove(const Element );  // remove an element from the list
+      void view() const;  // view the list
+      int size() const; // get the size of the list
+      void clear();
 
-private: // non-exportable
-  // No private member documentation – implementation details are hidden/abstracted away
+
+  private: // non-exportable
+    // No private member documentation – implementation details are hidden/abstracted away
     struct Node;
     typedef Node * NodePtr;
 
@@ -66,6 +48,6 @@ private: // non-exportable
     };
 
     NodePtr front;
-};
+  };
 
 #endif // Guard – end
