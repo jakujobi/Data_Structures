@@ -1,13 +1,12 @@
-// Header Files (.h) 
+// Driver/main Files (.cpp) 
 /******************************************************************** 
-*** NAME : JOHN AKUJOBI    *** 
-*** CLASS : CSC 300 - DATA STRUCTURES*** 
-*** ASSIGNMENT : #############       *** 
-*** DUE DATE : ####                                       *** 
-*** INSTRUCTOR : GAMRADT *** 
-********************************************************************* 
-*** DESCRIPTION : <general english description of the abstract data type> *** 
-*** <including supporting operations> *** 
+*** NAME : JOHN AKUJOBI                                           *** 
+*** CLASS : CSC 300 - DATA STRUCTURES                             *** 
+*** ASSIGNMENT : 1                                                *** 
+*** DUE DATE : 09-25-23                                           *** 
+*** INSTRUCTOR : GAMRADT                                          *** 
+*********************************************************************
+*** DESCRIPTION : This program implements a List ADT in C++ using a linked list structure. The List supports core operations like add, remove, and traverse with proper encapsulation and abstraction. *** 
 ********************************************************************/ 
 
 // other preprocessor directives 

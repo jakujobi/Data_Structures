@@ -3,5 +3,8 @@
         "GAMRADT",
         "ifndef",
         "struct"
-    ]
+    ],
+    "files.associations": {
+        "iostream": "cpp"
+    }
 }

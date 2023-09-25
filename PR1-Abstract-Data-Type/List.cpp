@@ -1,12 +1,12 @@
-//Implementation Files (.cpp) 
+// Driver/main Files (.cpp) 
 /******************************************************************** 
-*** NAME : JOHN AKUJOBI    *** 
-*** CLASS : CSC 300 - DATA STRUCTURES*** 
-*** ASSIGNMENT :                               *** 
-*** DUE DATE : ####                                       *** 
-*** INSTRUCTOR : GAMRADT *** 
-********************************************************************* 
-*** DESCRIPTION : This file contains the implementation of the List class, which is a linked list data structure. *** 
+*** NAME : JOHN AKUJOBI                                           *** 
+*** CLASS : CSC 300 - DATA STRUCTURES                             *** 
+*** ASSIGNMENT : 1                                                *** 
+*** DUE DATE : 09-25-23                                           *** 
+*** INSTRUCTOR : GAMRADT                                          *** 
+*********************************************************************
+*** DESCRIPTION : This program implements a List ADT in C++ using a linked list structure. The List supports core operations like add, remove, and traverse with proper encapsulation and abstraction. *** 
 ********************************************************************/ 
 
 #include "List.h" // matching header file 
@@ -74,10 +74,28 @@ List::~List() {
 *** RETURN : None                                                                                               *** 
 ********************************************************************/ 
 void List::add(const Element e) {
+
+    int initialCount = List::size();    //check the initial size of the list
+
     NodePtr newNode = new Node;
     newNode->element = e;
     newNode->next = front;
     front = newNode;
+
+    int endCount = List::size();
+    
+    //This is to check if the element was successfully added to the list
+    //if (front->element == e) {
+    //if (endCount == initialCount+1) {
+    if (endCount > initialCount) { //check if the final list size is larger than the initial
+        cout << "Addition Successful" << endl;
+    }
+    else {
+        cout << "Error: Allocation addition failed" << endl;
+       // deallocate the node that failed to be added
+       // delete newNode;
+    }
+    //*/
 }
 
 
@@ -119,7 +137,7 @@ void List::remove(const Element e) {
 void List::view() const {
     NodePtr current = front;
     while (current != nullptr) {
-        std::cout << current->element << " ";
+        cout << current->element << " ";
         current = current->next;
     }
     cout << endl;
