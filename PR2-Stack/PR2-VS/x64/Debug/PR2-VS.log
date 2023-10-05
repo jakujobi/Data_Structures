@@ -1,1 +1,5 @@
-﻿
+﻿  PR2-VS.cpp
+  stack.cpp
+  Generating Code...
+PR2-VS.obj : error LNK2005: main already defined in main.obj
+C:\Users\akujo_2rtofyy\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR2-Stack\PR2-VS\x64\Debug\PR2-VS.exe : fatal error LNK1169: one or more multiply defined symbols found
