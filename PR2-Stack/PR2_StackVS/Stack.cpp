@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-// Constructor (default size is 2)
+//! Constructor (default size is 2)
 Stack::Stack(int capacity) : STACK_SIZE(capacity) {
     initialize();
     if (capacity > 0) {
@@ -12,7 +12,7 @@ Stack::Stack(int capacity) : STACK_SIZE(capacity) {
     }
 }
 
-// Copy constructor
+//! Copy constructor
 Stack::Stack(const Stack& other) : STACK_SIZE(other.STACK_SIZE) {
     initialize();
     stackArray = new Element[other.STACK_SIZE];
@@ -22,19 +22,19 @@ Stack::Stack(const Stack& other) : STACK_SIZE(other.STACK_SIZE) {
     }
 }
 
-// Destructor
+//! Destructor
 Stack::~Stack() {
     delete[] stackArray;
+    stackArray = nullptr;
 }
 
-// Initialize stack to empty
+//! Initialize stack to empty
 void Stack::initialize() {
     stackArray = nullptr;
     top = -1;
 }
 
-// Add element to top
-// Push element onto the stack
+//! Push element onto the top of the stack
 void Stack::push(const Element& element) {
     if (top == STACK_SIZE - 1) {
         resize();
@@ -45,7 +45,7 @@ void Stack::push(const Element& element) {
     //     return;
 }
 
-// Remove element from top
+//! Remove element from top
 Element Stack::pop() {
     // if (empty()) {
     //     std::cout << "Warning: Stack is empty. Cannot pop element." << std::endl;
@@ -58,7 +58,7 @@ Element Stack::pop() {
     return stackArray[top--];
 }
 
-// Access top element
+//! Access top element
 Element Stack::peek() const {
     // if (empty()) {
     //     std::cout << "Warning: Stack is empty. Cannot peek." << std::endl;
@@ -70,7 +70,7 @@ Element Stack::peek() const {
     return stackArray[top];
 }
 
-// Display stack contents
+//! Display stack contents
 void Stack::view() const {
     // for (int i = top; i >= 0; --i) {
     //     std::cout << stackArray[i] << std::endl;
@@ -90,7 +90,7 @@ void Stack::view() const {
     }
 }
 
-// Resize the stack array when it's full
+//! Resize the stack array when it's full
 void Stack::resize() {
     int newCapacity = STACK_SIZE * 2; // Double the capacity
     Element* newStack = new Element[newCapacity];
@@ -104,7 +104,7 @@ void Stack::resize() {
     STACK_SIZE = newCapacity;
 }
 
-// Build a separate duplicate copy of the existing stack
+//! Build a separate duplicate copy of the existing stack
 Stack Stack::copy() const {
     Stack copiedStack(STACK_SIZE);
     for (int i = top; i >= 0; --i) {
@@ -113,19 +113,27 @@ Stack Stack::copy() const {
     return copiedStack;
 }
 
-// Remove all elements from the stack
-void Stack::destroy() {
+//! Remove all elements from the stack
+void Stack::destroy() { 
     while (!empty()) {
         pop();
     }
+    delete[] stackArray;
+    stackArray = nullptr; // to avoid a dangling pointer
+    
 }
 
-// Checks if the stack is empty
+//! Checks if the stack is empty
 bool Stack::empty() const {
     return top == -1;
 }
 
-// Checks if the stack is full
+//! Checks if the stack is full
 bool Stack::full() const {
     return top == STACK_SIZE - 1;
+}
+
+//! Returns the number of elements in the stack
+int Stack::size() const {
+    return top + 1; // Number of elements in the stack
 }
