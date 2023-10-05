@@ -5,6 +5,6 @@
         "struct"
     ],
     "files.associations": {
-        "iostream": "cpp"
+        "*.tpp": "cpp"
     }
 }
