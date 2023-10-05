@@ -1,15 +1,12 @@
-#ifndef __STACK_H__
-#define __STACK_H__
-
-#include <iostream>
+#ifndef _STACK_H
+#define _STACK_H
 #include <string>
+#include <iostream>
 using namespace std;
 
 class Stack {
 public:
-    Stack();    // default constructor
-    
-    Stack(int capacity);   // constructor with initial capacity as parameter
+    Stack(int capacity = 2);   // default constructor with initial capacity as parameter
 
     Stack(const Stack& other);    // copy constructor
 
@@ -43,6 +40,8 @@ private:
     void initialize();  // initialize the stack to empty
 
     void resize();  // Resize the stack array when it's full
+
+    int stackSize; // keep track of the number of elements in the stack
 };
 
 #endif // STACK_H 
