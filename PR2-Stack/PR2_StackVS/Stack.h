@@ -8,10 +8,19 @@ using namespace std;
 typedef string Element;
 
 /********************************************************************
-*** CLASS Stack ***
-*** DESCRIPTION : This class implements a stack data structure using a dynamic array.  ***
-                It provides basic stack operations such as push, pop, peek, empty, full, size, view, copy, and destroy. *** 
-********************************************************************/
+*** CLASS Stack                                                                         ***
+*** DESCRIPTION : This class implements a stack data structure using a dynamic array.   ***
+                It provides stack operations such as:                                   ***
+                - push: add an element to the top of the stack                          ***
+                - pop: remove the top element from the stack                            ***
+                - peek: return the top element from the stack                           ***
+                - empty: return true if the stack is empty                              ***
+                - full: return true if the stack is full                                ***
+                - size: return the number of elements in the stack                      ***
+                - view: print the stack contents, size and capacity                     ***
+                - copy constructor: create a copy of the stack                          ***
+                - destructor: deallocate the stack and removes all elements             ***
+*******************************************************************************************/
 class Stack {
 public:
     Stack(int capacity = 2);   // default constructor with initial capacity as parameter
@@ -36,13 +45,16 @@ public:
 
     Stack copy() const; // return a copy of the stack
 
-    void destroy(); // deallocate the stack and removes all elements
+    //void destroy(); // deallocate the stack and removes all elements
 
     void printStack() const;
     
 
 private:
     int STACK_SIZE;
+    //I tried using a constant for this,
+    //but it interfered with the resize function
+    //which uses the STACK_SIZE to resize the array
     
     Element* stackArray;         // Pointer to dynamic array
 

@@ -1,4 +1,22 @@
 //!________________________________________________
+// Driver/main Files (.cpp) 
+/******************************************************************** 
+*** NAME : JOHN AKUJOBI    *** 
+*** CLASS : CSC 300 - DATA STRUCTURES*** 
+*** ASSIGNMENT : Assignment #2 - Stack *** 
+*** DUE DATE : 10-06-23                                       *** 
+*** INSTRUCTOR : GAMRADT *** 
+*********************************************************************/
+/*** DESCRIPTION : This program demonstrates the usage of the Stack class by
+            creating a stack
+            pushing elements onto it
+            peeking at the top element
+            popping an element,
+            resizing the stack,
+            destroying the stack. ***
+
+*********************************************************************/
+
 #include <iostream>
 #include "Stack.h"
 using namespace std;
@@ -13,21 +31,21 @@ using namespace std;
 *** RETURN : int (0) *** 
 ********************************************************************/
 int main() {
-    // Create a stack
-    Stack stack;
+    Stack stack; // Create a stack
 
-    // Push some elements onto the stack
+    // Push some elements onto the stack and view the stack each time
     stack.push("Element 1");
-    stack.printStack(); // Print the stack after pushing 1 element
+    stack.view(); // Print the stack after pushing 1 element
 
     stack.push("Element 2");
-    stack.printStack(); // Print the stack after pushing 2 elements
+    stack.view(); // Print the stack after pushing 2 elements
 
     stack.push("Element 3");
-    stack.printStack(); // Print the stack after pushing 3 elements
+    stack.view(); // Print the stack after pushing 3 elements
+
 
     // Peek at the top element
-    cout << "Top element: " << stack.peek() << endl;
+    cout << "\nTop element: " << stack.peek() << endl;
 
     // Pop an element
     Element popped = stack.pop();
@@ -35,15 +53,18 @@ int main() {
 
     // Display the modified stack
     cout << "\nModified stack contents:" << endl;
-    stack.printStack();
+    stack.view();
 
     cout << endl;
-    stack.printStack(); // Print the stack
+    stack.view(); // Print the stack
+
+    Stack stack2(stack);    // Copy the stack
+    stack2.view();            // Print the copied stack
 
     cout << endl;
     cout << "\nDestroy the stack" << endl;
-
-    stack.destroy(); // Destroy the stack
+    //call the destructor to destroy the stack
+    //stack.destroy();
 
     cout << "\nCheck if the Stack is empty or not: " << endl;
     // Check if the stack is empty after destruction

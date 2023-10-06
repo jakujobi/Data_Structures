@@ -50,6 +50,10 @@ Stack::Stack(const Stack& other) : STACK_SIZE(other.STACK_SIZE) {
 *** RETURN : None *** 
 ********************************************************************/
 Stack::~Stack() {
+    while (!empty()) {
+        pop();
+    }
+    
     delete[] stackArray;
     stackArray = nullptr;
 }
@@ -86,9 +90,20 @@ void Stack::push(const Element& element) {
         resize();
     }
     stackArray[++top] = element;
-    // if (full()) {
-    //     std::cout << "Warning: Stack is full. Cannot push element." << std::endl;
-    //     return;
+
+    if (full())
+    {
+        cout << "Warning: Stack is full. Cannot push element." << endl;
+        cout << "Would you like to resize the stack?" << endl;
+        cout << "1. Yes" << endl;
+        cout << "2. No" << endl;
+        int choice;
+        cin >> choice;
+        if (choice == 1) {
+            resize();
+        }
+    return;
+}
 }
 
 
@@ -102,14 +117,10 @@ void Stack::push(const Element& element) {
 *** IN/OUT ARGS : None *** 
 *** RETURN : Element - The top element of the stack. *** 
 ********************************************************************/
-Element Stack::pop() {
-    // if (empty()) {
-    //     std::cout << "Warning: Stack is empty. Cannot pop element." << std::endl;
-    //     return;
-    // }
-    // --top;
+Element Stack::pop(){
+
     if (empty()) {
-        throw std::runtime_error("Stack is empty. Cannot pop.");
+        throw runtime_error("Stack is empty. Cannot pop.");
     }
     return stackArray[top--];
 }
@@ -127,11 +138,11 @@ Element Stack::pop() {
 ********************************************************************/
 Element Stack::peek() const {
     // if (empty()) {
-    //     std::cout << "Warning: Stack is empty. Cannot peek." << std::endl;
+    //     cout << "Warning: Stack is empty. Cannot peek." << endl;
     //     return "";
     // }
-        if (empty()) {
-        throw std::runtime_error("Stack is empty. Cannot peek.");
+    if (empty()) {
+        throw runtime_error ("//OOP! The stack is empty. Cannot peek.");
     }
     return stackArray[top];
 }
@@ -152,7 +163,7 @@ void Stack::view() const {
     //     std::cout << stackArray[i] << std::endl;
     // }
     if (empty()) {
-        cout << "TOP -> BOTTOM // Output for an empty Stack instance" << endl;
+        cout << "TOP -> BOTTOM" << endl;
     } else {
         cout << "TOP -> ";
         for (int i = top; i >= 0; --i) {
@@ -160,7 +171,7 @@ void Stack::view() const {
             if (i > 0) {
                 cout << " -> ";
             } else {
-                cout << " -> BOTTOM // Output for a populated Stack instance" << endl;
+                cout << " -> BOTTOM" << endl;
             }
         }
     }
@@ -187,6 +198,7 @@ void Stack::resize() {
     delete[] stackArray; // Deallocate the old array
     stackArray = newStack;
     STACK_SIZE = newCapacity;
+    cout << "Stack resized to " << STACK_SIZE << endl;
 }
 
 
@@ -210,7 +222,6 @@ Stack Stack::copy() const {
     return copiedStack;
 }
 
-
 //! Remove all elements from the stack
 /******************************************************************** 
 *** FUNCTION Stack::destroy *** 
@@ -220,15 +231,15 @@ Stack Stack::copy() const {
 *** OUTPUT ARGS : None *** 
 *** IN/OUT ARGS : None *** 
 *** RETURN : void *** 
-********************************************************************/
-void Stack::destroy() { 
-    while (!empty()) {
-        pop();
-    }
-    delete[] stackArray;
-    stackArray = nullptr; // to avoid a dangling pointer
+// ********************************************************************/
+// void Stack::destroy() { 
+//     while (!empty()) {
+//         pop();
+//     }
+//     delete[] stackArray;
+//     stackArray = nullptr; // to avoid a dangling pointer
     
-}
+// }
 
 
 //! Checks if the stack is empty
@@ -276,23 +287,24 @@ int Stack::size() const {
 }
 
 
-//! Print the stack
-/******************************************************************** 
-*** FUNCTION Stack::printStack *** 
-********************************************************************* 
-*** DESCRIPTION : Displays the contents of the stack, its size, and capacity. *** 
-*** INPUT ARGS : None *** 
-*** OUTPUT ARGS : None *** 
-*** IN/OUT ARGS : None *** 
-*** RETURN : void *** 
-********************************************************************/
-void Stack::printStack() const {
-    // Display the stack contents
-    cout << "Stack contents:" << endl;
-    view();
+//Learned that i did not need this function, so i moved its code to the view function
+// //! Print the stack
+// /******************************************************************** 
+// *** FUNCTION Stack::printStack *** 
+// ********************************************************************* 
+// *** DESCRIPTION : Displays the contents of the stack, its size, and capacity. *** 
+// *** INPUT ARGS : None *** 
+// *** OUTPUT ARGS : None *** 
+// *** IN/OUT ARGS : None *** 
+// *** RETURN : void *** 
+// ********************************************************************/
+// void Stack::printStack() const {
+//     // Display the stack contents
+//     cout << "Stack contents:" << endl;
+//     view();
 
-     // Get the size of the stack
-    cout << "Stack size: " << size() << endl;
-    cout << "Stack capacity: " << STACK_SIZE << endl;
-    cout << endl;
-}
+//      // Get the size of the stack
+//     cout << "Stack size: " << size() << endl;
+//     cout << "Stack capacity: " << STACK_SIZE << endl;
+//     cout << endl;
+// }
