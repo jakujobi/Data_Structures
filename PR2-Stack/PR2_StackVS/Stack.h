@@ -33,6 +33,9 @@ public:
 
     void destroy(); // deallocate the stack and removes all elements
 
+    void printStack() const;
+    
+
 private:
     int STACK_SIZE;
     

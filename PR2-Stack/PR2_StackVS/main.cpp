@@ -1,59 +1,3 @@
-// #include <iostream>
-// #include "Stack.h"
-
-// using namespace std;
-
-// int main() {
-//     // Create a stack with default size (2)
-//     Stack stack;
-
-//     // Push elements onto the stack
-//     stack.push("Apple");
-//     stack.push("Banana");
-//     stack.push("Cherry");
-
-//     // Display the stack contents
-//     cout << "Stack contents:" << endl;
-//     stack.view();
-
-//     // Peek at the top element without removing it
-//     cout << "Top element: " << stack.peek() << endl;
-
-//     // Copy the stack and display the copied stack contents
-//     Stack copiedStack = stack.copy();
-//     cout << "Copied stack contents:" << endl;
-//     copiedStack.view();
-
-//     // Pop an element from the original stack
-//     stack.pop();
-
-//     // Display the modified stack
-//     cout << "Modified stack contents:" << endl;
-//     stack.view();
-
-//     // Check if the stack is empty
-//     if (stack.empty()) {
-//         cout << "Stack is empty." << endl;
-//     }
-//     else {
-//         cout << "Stack is not empty." << endl;
-//     }
-
-//     // Destroy the stack
-//     stack.destroy();
-
-//     // Check if the stack is empty after destruction
-//     if (stack.empty()) {
-//         cout << "Stack is empty after destruction." << endl;
-//     }
-//     else {
-//         cout << "Stack is not empty after destruction." << endl;
-//     }
-
-//     return 0;
-// }
-
-
 //!________________________________________________
 #include <iostream>
 #include "Stack.h"
@@ -65,12 +9,13 @@ int main() {
 
     // Push some elements onto the stack
     stack.push("Element 1");
-    stack.push("Element 2");
-    stack.push("Element 3");
+    stack.printStack(); // Print the stack after pushing 1 element
 
-    // Display the stack contents
-    cout << "Stack contents:" << endl;
-    stack.view();
+    stack.push("Element 2");
+    stack.printStack(); // Print the stack after pushing 2 elements
+
+    stack.push("Element 3");
+    stack.printStack(); // Print the stack after pushing 3 elements
 
     // Peek at the top element
     cout << "Top element: " << stack.peek() << endl;
@@ -80,22 +25,18 @@ int main() {
     cout << "Popped element: " << popped << endl;
 
     // Display the modified stack
-    cout << "Modified stack contents:" << endl;
-    stack.view();
+    cout << "\nModified stack contents:" << endl;
+    stack.printStack();
 
-    // Check if the stack is empty
-    if (stack.empty()) {
-        cout << "Stack is empty." << endl;
-    } else {
-        cout << "Stack is not empty." << endl;
-    }
+    cout << endl;
+    stack.printStack(); // Print the stack
 
-    // Get the size of the stack
-    cout << "Stack size: " << stack.size() << endl;
+    cout << endl;
+    cout << "\nDestroy the stack" << endl;
 
-    // Destroy the stack
-    stack.destroy();
+    stack.destroy(); // Destroy the stack
 
+    cout << "\nCheck if the Stack is empty or not: " << endl;
     // Check if the stack is empty after destruction
     if (stack.empty()) {
         cout << "Stack is empty after destruction." << endl;

@@ -5,6 +5,13 @@
 using namespace std;
 
 //! Constructor (default size is 2)
+/*********************************************************************
+*** FUNCTION Stack ***
+*********************************************************************
+*** DESCRIPTION : Class constructor to create a stack with default or given capacity ***
+*** INPUT ARGS : int capacity - stack capacity ***
+*** RETURN : None ***
+*********************************************************************/
 Stack::Stack(int capacity) : STACK_SIZE(capacity) {
     initialize();
     if (capacity > 0) {
@@ -13,6 +20,15 @@ Stack::Stack(int capacity) : STACK_SIZE(capacity) {
 }
 
 //! Copy constructor
+/******************************************************************** 
+*** FUNCTION Stack::Stack(const Stack& other) *** 
+********************************************************************* 
+*** DESCRIPTION : Copy constructor for the Stack class. Initializes a new Stack object with the same size as the input Stack object, and copies over all elements from the input Stack object to the new Stack object. *** 
+*** INPUT ARGS : other (const Stack&) - The Stack object to be copied. *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : None *** 
+********************************************************************/
 Stack::Stack(const Stack& other) : STACK_SIZE(other.STACK_SIZE) {
     initialize();
     stackArray = new Element[other.STACK_SIZE];
@@ -22,11 +38,22 @@ Stack::Stack(const Stack& other) : STACK_SIZE(other.STACK_SIZE) {
     }
 }
 
+
 //! Destructor
+/******************************************************************** 
+*** FUNCTION Stack::~Stack() *** 
+********************************************************************* 
+*** DESCRIPTION : Destructor for the Stack class. Deletes the stackArray and sets it to nullptr. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : None *** 
+********************************************************************/
 Stack::~Stack() {
     delete[] stackArray;
     stackArray = nullptr;
 }
+
 
 //! Initialize stack to empty
 void Stack::initialize() {
@@ -71,6 +98,15 @@ Element Stack::peek() const {
 }
 
 //! Display stack contents
+/******************************************************************** 
+*** FUNCTION view *** 
+********************************************************************* 
+*** DESCRIPTION : Displays the contents of the stack from top to bottom. If the stack is empty, it displays a message indicating that the stack is empty. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : void *** 
+********************************************************************/
 void Stack::view() const {
     // for (int i = top; i >= 0; --i) {
     //     std::cout << stackArray[i] << std::endl;
@@ -136,4 +172,17 @@ bool Stack::full() const {
 //! Returns the number of elements in the stack
 int Stack::size() const {
     return top + 1; // Number of elements in the stack
+}
+
+
+//! Print the stack
+void Stack::printStack() const {
+    // Display the stack contents
+    cout << "Stack contents:" << endl;
+    view();
+
+     // Get the size of the stack
+    cout << "Stack size: " << size() << endl;
+    cout << "Stack capacity: " << STACK_SIZE << endl;
+    cout << endl;
 }
