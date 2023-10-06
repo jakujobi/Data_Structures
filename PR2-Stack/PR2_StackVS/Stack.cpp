@@ -56,12 +56,31 @@ Stack::~Stack() {
 
 
 //! Initialize stack to empty
+/******************************************************************** 
+*** FUNCTION Stack::initialize *** 
+********************************************************************* 
+*** DESCRIPTION : Initializes the stack by setting the stackArray to nullptr and top to -1. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : void *** 
+********************************************************************/
 void Stack::initialize() {
     stackArray = nullptr;
     top = -1;
 }
 
+
 //! Push element onto the top of the stack
+/******************************************************************** 
+*** FUNCTION push *** 
+********************************************************************* 
+*** DESCRIPTION : Adds an element to the top of the stack. If the stack is full, it resizes the stack before adding the element. *** 
+*** INPUT ARGS : element (const Element&) - The element to be added to the stack. *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : void *** 
+********************************************************************/
 void Stack::push(const Element& element) {
     if (top == STACK_SIZE - 1) {
         resize();
@@ -72,7 +91,17 @@ void Stack::push(const Element& element) {
     //     return;
 }
 
+
 //! Remove element from top
+/******************************************************************** 
+*** FUNCTION Stack::pop *** 
+********************************************************************* 
+*** DESCRIPTION : Removes and returns the top element of the stack. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : Element - The top element of the stack. *** 
+********************************************************************/
 Element Stack::pop() {
     // if (empty()) {
     //     std::cout << "Warning: Stack is empty. Cannot pop element." << std::endl;
@@ -85,7 +114,17 @@ Element Stack::pop() {
     return stackArray[top--];
 }
 
+
 //! Access top element
+/******************************************************************** 
+*** FUNCTION peek *** 
+********************************************************************* 
+*** DESCRIPTION : Returns the top element of the stack without removing it. If the stack is empty, throws a runtime error. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : Element - The top element of the stack *** 
+********************************************************************/
 Element Stack::peek() const {
     // if (empty()) {
     //     std::cout << "Warning: Stack is empty. Cannot peek." << std::endl;
@@ -96,6 +135,7 @@ Element Stack::peek() const {
     }
     return stackArray[top];
 }
+
 
 //! Display stack contents
 /******************************************************************** 
@@ -126,7 +166,16 @@ void Stack::view() const {
     }
 }
 
+
 //! Resize the stack array when it's full
+/********************************************************************
+*** FUNCTION resize ***
+*** DESCRIPTION : Doubles the capacity of the stack by creating a new array with twice the size of the current array,
+        copying the elements from the old array to the new array, deallocating the old array, and updating the stack size. ***
+*** INPUT ARGS : None ***
+*** OUTPUT ARGS : None ***
+*** IN/OUT ARGS : None ***
+*** RETURN : void *** ********************************************************************/
 void Stack::resize() {
     int newCapacity = STACK_SIZE * 2; // Double the capacity
     Element* newStack = new Element[newCapacity];
@@ -140,7 +189,19 @@ void Stack::resize() {
     STACK_SIZE = newCapacity;
 }
 
+
 //! Build a separate duplicate copy of the existing stack
+/******************************************************************** 
+*** FUNCTION Stack::copy() *** 
+********************************************************************* 
+*** DESCRIPTION : This function creates a copy of the current stack object. It creates a new stack object, 
+                  copies all the elements of the current stack object to the new stack object, and returns 
+                  the new stack object. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : Stack - A new stack object that is a copy of the current stack object. *** 
+********************************************************************/
 Stack Stack::copy() const {
     Stack copiedStack(STACK_SIZE);
     for (int i = top; i >= 0; --i) {
@@ -149,7 +210,17 @@ Stack Stack::copy() const {
     return copiedStack;
 }
 
+
 //! Remove all elements from the stack
+/******************************************************************** 
+*** FUNCTION Stack::destroy *** 
+********************************************************************* 
+*** DESCRIPTION : This function destroys the stack by popping all elements from the stack and deleting the stack array. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : void *** 
+********************************************************************/
 void Stack::destroy() { 
     while (!empty()) {
         pop();
@@ -159,23 +230,62 @@ void Stack::destroy() {
     
 }
 
+
 //! Checks if the stack is empty
+/******************************************************************** 
+*** FUNCTION Stack::empty() *** 
+********************************************************************* 
+*** DESCRIPTION : This function checks if the stack is empty or not. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : bool - Returns true if the stack is empty, false otherwise. *** 
+********************************************************************/
 bool Stack::empty() const {
     return top == -1;
 }
 
+
 //! Checks if the stack is full
+/******************************************************************** 
+*** FUNCTION Stack::full() *** 
+********************************************************************* 
+*** DESCRIPTION : Checks if the stack is full. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : bool - true if the stack is full, false otherwise. *** 
+********************************************************************/
 bool Stack::full() const {
     return top == STACK_SIZE - 1;
 }
 
+
 //! Returns the number of elements in the stack
+/******************************************************************** 
+*** FUNCTION Stack::size() *** 
+********************************************************************* 
+*** DESCRIPTION : Returns the number of elements in the stack *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : int - Number of elements in the stack *** 
+********************************************************************/
 int Stack::size() const {
     return top + 1; // Number of elements in the stack
 }
 
 
 //! Print the stack
+/******************************************************************** 
+*** FUNCTION Stack::printStack *** 
+********************************************************************* 
+*** DESCRIPTION : Displays the contents of the stack, its size, and capacity. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : void *** 
+********************************************************************/
 void Stack::printStack() const {
     // Display the stack contents
     cout << "Stack contents:" << endl;

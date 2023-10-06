@@ -7,6 +7,11 @@ using namespace std;
 
 typedef string Element;
 
+/********************************************************************
+*** CLASS Stack ***
+*** DESCRIPTION : This class implements a stack data structure using a dynamic array.  ***
+                It provides basic stack operations such as push, pop, peek, empty, full, size, view, copy, and destroy. *** 
+********************************************************************/
 class Stack {
 public:
     Stack(int capacity = 2);   // default constructor with initial capacity as parameter

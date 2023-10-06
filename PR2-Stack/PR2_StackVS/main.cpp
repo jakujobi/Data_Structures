@@ -3,6 +3,15 @@
 #include "Stack.h"
 using namespace std;
 
+/******************************************************************** 
+*** FUNCTION main *** 
+********************************************************************* 
+*** DESCRIPTION : This function demonstrates the usage of the Stack class by creating a stack, pushing elements onto it, peeking at the top element, popping an element, and destroying the stack. *** 
+*** INPUT ARGS : None *** 
+*** OUTPUT ARGS : None *** 
+*** IN/OUT ARGS : None *** 
+*** RETURN : int (0) *** 
+********************************************************************/
 int main() {
     // Create a stack
     Stack stack;
