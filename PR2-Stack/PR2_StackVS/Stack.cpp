@@ -1,3 +1,23 @@
+/******************************************************************** 
+*** NAME : JOHN AKUJOBI                                         *** 
+*** CLASS : CSC 300 - DATA STRUCTURES                           *** 
+*** ASSIGNMENT : Assignment #2 - Stack                          *** 
+*** DUE DATE : 10-06-23                                         *** 
+*** INSTRUCTOR : GAMRADT                                        *** 
+*********************************************************************/
+/********************************************************************* 
+*** DESCRIPTION : This class implements a stack data structure using a dynamic array.   ***
+    It provides stack operations such as:                            ***
+        - push: add an element to the top of the stack              ***
+        - pop: remove the top element from the stack                ***
+        - peek: return the top element from the stack               ***
+        - empty: return true if the stack is empty                  ***
+        - full: return true if the stack is full                    ***
+        - size: return the number of elements in the stack          ***
+        - view: print the stack contents, size and capacity         ***
+        - copy constructor: create a copy of the stack              ***
+        - destructor: deallocate the stack and removes all elements ***
+*********************************************************************/
 //!________________________________________________________________________
 #include "Stack.h"
 #include <iostream>
@@ -86,10 +106,10 @@ void Stack::initialize() {
 *** RETURN : void *** 
 ********************************************************************/
 void Stack::push(const Element& element) {
-    if (top == STACK_SIZE - 1) {
-        resize();
-    }
-    stackArray[++top] = element;
+    // if (top == STACK_SIZE - 1) {
+    //     resize();
+    // }
+    
 
     if (full())
     {
@@ -103,7 +123,9 @@ void Stack::push(const Element& element) {
             resize();
         }
     return;
-}
+    }
+
+    stackArray[++top] = element;
 }
 
 
@@ -175,6 +197,11 @@ void Stack::view() const {
             }
         }
     }
+
+     // Get the size of the stack
+    cout << "Stack size: " << size() << endl;
+    cout << "Stack capacity: " << STACK_SIZE << endl;
+    cout << endl;
 }
 
 

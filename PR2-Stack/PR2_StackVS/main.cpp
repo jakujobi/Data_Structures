@@ -1,20 +1,19 @@
 //!________________________________________________
 // Driver/main Files (.cpp) 
 /******************************************************************** 
-*** NAME : JOHN AKUJOBI    *** 
-*** CLASS : CSC 300 - DATA STRUCTURES*** 
-*** ASSIGNMENT : Assignment #2 - Stack *** 
-*** DUE DATE : 10-06-23                                       *** 
-*** INSTRUCTOR : GAMRADT *** 
+*** NAME : JOHN AKUJOBI                                         *** 
+*** CLASS : CSC 300 - DATA STRUCTURES                           *** 
+*** ASSIGNMENT : Assignment #2 - Stack                          *** 
+*** DUE DATE : 10-06-23                                         *** 
+*** INSTRUCTOR : GAMRADT                                        *** 
 *********************************************************************/
-/*** DESCRIPTION : This program demonstrates the usage of the Stack class by
-            creating a stack
-            pushing elements onto it
-            peeking at the top element
-            popping an element,
-            resizing the stack,
-            destroying the stack. ***
-
+/*** DESCRIPTION : This program demonstrates the usage of the Stack class by        ***
+            - creating a stack                                                      ***
+            - pushing elements onto it                                              ***
+            - peeking at the top element                                            ***
+            - popping an element,                                                   ***
+            - resizing the stack,                                                   ***
+            - destroying the stack.                                                 ***
 *********************************************************************/
 
 #include <iostream>
@@ -32,15 +31,22 @@ using namespace std;
 ********************************************************************/
 int main() {
     Stack stack; // Create a stack
+    cout << "Stack created. " << endl;
 
     // Push some elements onto the stack and view the stack each time
+    cout << "\nAbout to Add " << "Element 2" << endl;
     stack.push("Element 1");
+    cout << "Added element: " << "Element 1" << endl;
     stack.view(); // Print the stack after pushing 1 element
 
+    cout << "\nAbout to Add " << "Element 2" << endl;
     stack.push("Element 2");
+    cout << "Added element: " << "Element 2" << endl;
     stack.view(); // Print the stack after pushing 2 elements
 
+    cout << "\nAbout to Add " << "Element 3" << endl;
     stack.push("Element 3");
+    cout << "Added element: " << "Element 1" << endl;
     stack.view(); // Print the stack after pushing 3 elements
 
 

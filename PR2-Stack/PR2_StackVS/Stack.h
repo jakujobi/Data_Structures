@@ -1,3 +1,23 @@
+/******************************************************************** 
+*** NAME : JOHN AKUJOBI                                         *** 
+*** CLASS : CSC 300 - DATA STRUCTURES                           *** 
+*** ASSIGNMENT : Assignment #2 - Stack                          *** 
+*** DUE DATE : 10-06-23                                         *** 
+*** INSTRUCTOR : GAMRADT                                        *** 
+*********************************************************************/
+/********************************************************************* 
+*** DESCRIPTION : This class implements a stack data structure using a dynamic array.   ***
+    It provides stack operations such as:                            ***
+        - push: add an element to the top of the stack              ***
+        - pop: remove the top element from the stack                ***
+        - peek: return the top element from the stack               ***
+        - empty: return true if the stack is empty                  ***
+        - full: return true if the stack is full                    ***
+        - size: return the number of elements in the stack          ***
+        - view: print the stack contents, size and capacity         ***
+        - copy constructor: create a copy of the stack              ***
+        - destructor: deallocate the stack and removes all elements ***
+*********************************************************************/
 //!------------------------------------------
 #ifndef _STACK_H
 #define _STACK_H
@@ -47,7 +67,7 @@ public:
 
     //void destroy(); // deallocate the stack and removes all elements
 
-    void printStack() const;
+    //void printStack() const;
     
 
 private:
