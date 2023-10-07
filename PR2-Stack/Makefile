@@ -1,23 +1,25 @@
-CXX		  := g++
-CXX_FLAGS := -Wall -Wextra -std=c++17 -ggdb
+# FILEPATH: PROTECTED
 
-BIN		:= bin
-SRC		:= src
-INCLUDE	:= include
-LIB		:= lib
+# Compiler and flags
+CC = g++
+CFLAGS = -Wall -Wextra -pedantic -std=c++11
 
-LIBRARIES	:=
-EXECUTABLE	:= main
+# Source files
+SRCS = main.cpp List.cpp
 
+# Object files
+OBJS = $(SRCS:.cpp=.o)
 
-all: $(BIN)/$(EXECUTABLE)
+# Executable
+EXEC = program
 
-run: clean all
-	clear
-	./$(BIN)/$(EXECUTABLE)
+all: $(EXEC)
 
-$(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
-	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) -L$(LIB) $^ -o $@ $(LIBRARIES)
+$(EXEC): $(OBJS)
+    $(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
+
+%.o: %.cpp
+    $(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	-rm $(BIN)/*
+    rm -f $(OBJS) $(EXEC)
