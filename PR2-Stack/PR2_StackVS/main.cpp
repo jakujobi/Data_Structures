@@ -19,6 +19,16 @@ using namespace std;
 
 int main() {
     /********************************************************************
+    *** Test Case 6: Test Edge Case (Pop from Empty Stack)             ***
+    *** This is to check the error that was sent in the email.         ***
+    *********************************************************************/
+    cout << "Test Case 6: Pop from Empty Stack\n";
+    Stack emptyStack;
+    emptyStack.view(); // Expected: TOP -> BOTTOM (because the stack is empty)
+    emptyStack.pop();
+    cout << "------------------------------------\n";
+
+    /********************************************************************
     *** Test Case 1: Testing Default Constructor and Push            ***
     *********************************************************************/
     cout << "Test Case 1: Default Constructor and Push\n";
@@ -67,18 +77,6 @@ int main() {
     paramStack.view(); 
     cout << "------------------------------------\n";
 
-    /********************************************************************
-    *** Test Case 6: Test Edge Case (Pop from Empty Stack)             ***
-    *** This is to check the error that was sent in the email.         ***
-    *********************************************************************/
-    cout << "Test Case 6: Pop from Empty Stack\n";
-    Stack emptyStack;
-    try {
-        emptyStack.pop();
-    } catch (const runtime_error& e) {
-        cout << e.what() << endl; // Expected: Stack is empty. Cannot pop.
-    }
-    cout << "------------------------------------\n";
 
         /********************************************************************
     *** Test Case 7: Testing Destructor                               ***
@@ -101,6 +99,7 @@ int main() {
     cout << "Test Case 8: Peek on Empty Stack\n";
     try {
         Stack anotherEmptyStack;
+        anotherEmptyStack.view(); // Expected: TOP -> BOTTOM (because the stack is empty)
         anotherEmptyStack.peek();
     } catch (const runtime_error& e) {
         cout << e.what() << endl; // Expected: //OOP! The stack is empty. Cannot peek.

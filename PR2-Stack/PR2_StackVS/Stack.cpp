@@ -139,15 +139,19 @@ void Stack::push(const Element& element) {
 *** IN/OUT ARGS : None *** 
 *** RETURN : Element - The top element of the stack. *** 
 ********************************************************************/
-Element Stack::pop(){
-    if (empty()) {
-        //cout << "Warning: Stack is empty. Cannot pop." << endl;
-        throw runtime_error("Stack is empty. Cannot pop.");
-        //return stackArray[top];
-        //return 0;
-    }
-    else {
+Element Stack::pop() {
+    try {
+        if (empty()) {
+            throw runtime_error("Stack is empty. Cannot pop.");
+        }
         return stackArray[top--];
+    }
+    catch (const runtime_error& e) {
+        cout << e.what() << endl;
+        // If you want to return a default value when this error happens:
+        // return ""; // or some other default string value.
+        // Or simply:
+        return Element(); //
     }
 }
 
@@ -163,15 +167,18 @@ Element Stack::pop(){
 *** RETURN : Element - The top element of the stack *** 
 ********************************************************************/
 Element Stack::peek() const {
-    // if (empty()) {
-    //     cout << "Warning: Stack is empty. Cannot peek." << endl;
-    //     return "";
-    // }
-    if (empty()) {
-        throw runtime_error ("//OOP! The stack is empty. Cannot peek.");
+    try {
+        if (empty()) {
+            throw runtime_error("//OOP! The stack is empty. Cannot peek.");
+        }
+        return stackArray[top];
     }
-    return stackArray[top];
+    catch (const runtime_error& e) {
+        cout << e.what() << endl;
+        return Element(); // returns a default-constructed string.
+    }
 }
+
 
 
 //! Display stack contents
