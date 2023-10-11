@@ -69,6 +69,7 @@ int main() {
 
     /********************************************************************
     *** Test Case 6: Test Edge Case (Pop from Empty Stack)             ***
+    *** This is to check the error that was sent in the email.         ***
     *********************************************************************/
     cout << "Test Case 6: Pop from Empty Stack\n";
     Stack emptyStack;
@@ -77,6 +78,53 @@ int main() {
     } catch (const runtime_error& e) {
         cout << e.what() << endl; // Expected: Stack is empty. Cannot pop.
     }
+    cout << "------------------------------------\n";
+
+        /********************************************************************
+    *** Test Case 7: Testing Destructor                               ***
+    *********************************************************************/
+    cout << "Test Case 7: Destructor\n";
+    {
+        Stack destructorStack;
+        destructorStack.push("Test");
+        destructorStack.push("Destructor");
+        // Destructor will be called automatically at the end of this scope.
+        // You won't see any output directly from this test case. 
+        // The real test is to check if the program doesn't crash, indicating the destructor worked.
+    }
+    cout << "Destructor ran successfully.\n";
+    cout << "------------------------------------\n";
+
+    /********************************************************************
+    *** Test Case 8: Peek on Empty Stack                              ***
+    *********************************************************************/
+    cout << "Test Case 8: Peek on Empty Stack\n";
+    try {
+        Stack anotherEmptyStack;
+        anotherEmptyStack.peek();
+    } catch (const runtime_error& e) {
+        cout << e.what() << endl; // Expected: //OOP! The stack is empty. Cannot peek.
+    }
+    cout << "------------------------------------\n";
+
+    /********************************************************************
+    *** Test Case 9: Verify Resize Functionality                      ***
+    *********************************************************************/
+    cout << "Test Case 9: Verify Resize Functionality\n";
+    Stack resizeStack(2);
+    resizeStack.push("Initial");
+    resizeStack.push("Size");
+    resizeStack.push("Expanded"); // Here it might resize if implemented correctly
+    resizeStack.view(); // Expected: TOP -> Expanded -> Size -> Initial -> BOTTOM
+    cout << "------------------------------------\n";
+
+    /********************************************************************
+    *** Test Case 10: Test Copy Constructor with Empty Stack         ***
+    *********************************************************************/
+    cout << "Test Case 10: Copy Constructor with Empty Stack\n";
+    Stack emptyOriginalStack;
+    Stack copiedEmptyStack = emptyOriginalStack;
+    copiedEmptyStack.view(); // Expected: TOP -> BOTTOM (because the copied stack should also be empty)
     cout << "------------------------------------\n";
 
     //********************************************************************
