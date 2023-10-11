@@ -140,11 +140,15 @@ void Stack::push(const Element& element) {
 *** RETURN : Element - The top element of the stack. *** 
 ********************************************************************/
 Element Stack::pop(){
-
     if (empty()) {
+        //cout << "Warning: Stack is empty. Cannot pop." << endl;
         throw runtime_error("Stack is empty. Cannot pop.");
+        //return stackArray[top];
+        //return 0;
     }
-    return stackArray[top--];
+    else {
+        return stackArray[top--];
+    }
 }
 
 
@@ -175,17 +179,17 @@ Element Stack::peek() const {
 *** FUNCTION view *** 
 ********************************************************************* 
 *** DESCRIPTION : Displays the contents of the stack from top to bottom. If the stack is empty, it displays a message indicating that the stack is empty. *** 
-*** INPUT ARGS : None *** 
-*** OUTPUT ARGS : None *** 
-*** IN/OUT ARGS : None *** 
-*** RETURN : void *** 
+*** INPUT ARGS : None   *** 
+*** OUTPUT ARGS : None  *** 
+*** IN/OUT ARGS : None  *** 
+*** RETURN : void       *** 
 ********************************************************************/
 void Stack::view() const {
     // for (int i = top; i >= 0; --i) {
     //     std::cout << stackArray[i] << std::endl;
     // }
     if (empty()) {
-        cout << "TOP -> BOTTOM" << endl;
+        cout << "TOP -> BOTTOM \nThe stack is empty\nThere has to be an element in the stack before it can do the pop operation" << endl;
     } else {
         cout << "TOP -> ";
         for (int i = top; i >= 0; --i) {

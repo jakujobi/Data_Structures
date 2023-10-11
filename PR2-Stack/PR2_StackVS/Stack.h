@@ -1,3 +1,4 @@
+//Stack.h
 /******************************************************************** 
 *** NAME : JOHN AKUJOBI                                         *** 
 *** CLASS : CSC 300 - DATA STRUCTURES                           *** 
@@ -55,12 +56,6 @@ public:
 
     Element peek() const; // return the top element from the stack
 
-    bool empty() const; // return true if the stack is empty
-
-    bool full() const; // return true if the stack is full
-
-    int size() const; // return the number of elements in the stack
-
     void view() const; // print the stack
 
     Stack copy() const; // return a copy of the stack
@@ -79,12 +74,12 @@ private:
     Element* stackArray;         // Pointer to dynamic array
 
     int top;  // Index of top element
-
     void initialize();  // initialize the stack to empty
-
     void resize();  // Resize the stack array when it's full
-
-    int stackSize; // keep track of the number of elements in the stack
+    //int stackSize; // keep track of the number of elements in the stack
+    bool empty() const; // return true if the stack is empty
+    bool full() const; // return true if the stack is full
+    int size() const; // return the number of elements in the stack
 };
 
 #endif // STACK_H 
