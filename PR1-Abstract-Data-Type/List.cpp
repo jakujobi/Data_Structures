@@ -1,4 +1,3 @@
-// Driver/main Files (.cpp) 
 /******************************************************************** 
 *** NAME : JOHN AKUJOBI                                           *** 
 *** CLASS : CSC 300 - DATA STRUCTURES                             *** 

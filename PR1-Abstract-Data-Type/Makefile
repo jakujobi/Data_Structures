@@ -1,25 +1,11 @@
-# FILEPATH: c:\Users\akujo_2rtofyy\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR 1 - Abstract Data Type\Makefile
+output: main.o List.o
+	g++ -std=c++11 -o output main.o List.o
 
-# Compiler and flags
-CC = g++
-CFLAGS = -Wall -Wextra -pedantic -std=c++11
+main.o: main.cpp
+	g++ -std=c++11 -c main.cpp
 
-# Source files
-SRCS = main.cpp List.cpp
-
-# Object files
-OBJS = $(SRCS:.cpp=.o)
-
-# Executable
-EXEC = program
-
-all: $(EXEC)
-
-$(EXEC): $(OBJS)
-    $(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
-
-%.o: %.cpp
-    $(CC) $(CFLAGS) -c $< -o $@
+List.o: List.h List.cpp
+	g++ -std=c++11 -c List.cpp
 
 clean:
-    rm -f $(OBJS) $(EXEC)
+	rm output main.o List.o

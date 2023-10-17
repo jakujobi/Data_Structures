@@ -1,25 +1,11 @@
-# FILEPATH: PROTECTED
+output: main.o Stack.o
+	g++ -std=c++11 -o output main.o Stack.o
 
-# Compiler and flags
-CC = g++
-CFLAGS = -Wall -Wextra -pedantic -std=c++11
+main.o: main.cpp 
+	g++ -std=c++11 -c main.cpp
 
-# Source files
-SRCS = main.cpp List.cpp
-
-# Object files
-OBJS = $(SRCS:.cpp=.o)
-
-# Executable
-EXEC = program
-
-all: $(EXEC)
-
-$(EXEC): $(OBJS)
-    $(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
-
-%.o: %.cpp
-    $(CC) $(CFLAGS) -c $< -o $@
+Stack.o: Stack.h Stack.cpp 
+	g++ -std=c++11 -c Stack.cpp
 
 clean:
-    rm -f $(OBJS) $(EXEC)
+	rm output main.o Stack.o
