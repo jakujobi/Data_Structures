@@ -55,28 +55,28 @@ void Queue::dequeue(Element &stuff) {
     }
 }
 
-// void Queue::view() {
-//     cout << "HEAD -> "; //print HEAD in front like the assignment project shows
-//     while (head != tail) {
-//         cout << queueArray[head] << " -> ";
-//         head = (head + 1) % QUEUE_SIZE;
-//     }
-//     for (int i = head; i != tail; i = (i + 1) % QUEUE_SIZE) {
-//         cout << queueArray[i] << " -> "; 
-//     }
-//     cout << "TAIL\n"; //print TAIL behind also like the assignment project shows
-// }
-
 void Queue::view() {
-    cout << "HEAD -> ";
-    for (short i = head; i != tail; i = (i + 1) % QUEUE_SIZE) {
-        Element temp;
-        dequeue(temp);
-        cout << temp << " -> ";
-        enqueue(temp);
+    cout << "HEAD -> "; //print HEAD in front like the assignment project shows
+    while (head != tail) {
+        cout << queueArray[head] << " -> ";
+        head = (head + 1) % QUEUE_SIZE;
     }
-    cout << "TAIL" << endl;
+    for (int i = head; i != tail; i = (i + 1) % QUEUE_SIZE) {
+        cout << queueArray[i] << " -> "; 
+    }
+    cout << "TAIL\n"; //print TAIL behind also like the assignment project shows
 }
+
+// void Queue::view() {
+//     cout << "HEAD -> ";
+//     for (short i = head; i != tail; i = (i + 1) % QUEUE_SIZE) {
+//         Element temp;
+//         dequeue(temp);
+//         cout << temp << " -> ";
+//         enqueue(temp);
+//     }
+//     cout << "TAIL" << endl;
+// }
 
 
 bool Queue::isEmpty() const {
