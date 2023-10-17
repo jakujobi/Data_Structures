@@ -20,14 +20,14 @@ using namespace std;
 int main() {
     cout << "Test Case 1: Default Constructor and Enqueue\n";
     Queue defaultQueue;
-    defaultQueue.enqueue(5);
+    defaultQueue.enqueue(5);	// Enqueue elements that were shown in the assignment document
     defaultQueue.enqueue(-3);
     defaultQueue.view();
     cout << "------------------------------------\n";
 
     cout << "Test Case 2: Parameterized Constructor\n";
     Queue paramQueue(5);
-    paramQueue.enqueue(10);
+    paramQueue.enqueue(10);	// Enqueue some elements
     paramQueue.enqueue(20);
     paramQueue.view();
     cout << "------------------------------------\n";
