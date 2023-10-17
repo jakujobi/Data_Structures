@@ -42,7 +42,7 @@ void Queue::dequeue(Element &stuff) {
     }
 }
 
-void Queue::view() const {
+void Queue::view() {
     cout << "HEAD -> "; //print HEAD in front like the assignment project shows
     for (int i = head; i != tail; i = (i + 1) % QUEUE_SIZE) {
         cout << queueArray[i] << " -> "; 
