@@ -41,3 +41,19 @@ void Queue::dequeue(Element &stuff) {
         cout << "Yikes...The Queue is empty.\nSo, there's nothing to dequeue";  // Removed std::
     }
 }
+
+void Queue::view() const {
+    cout << "HEAD -> "; //print HEAD in front like the assignment project shows
+    for (int i = head; i != tail; i = (i + 1) % QUEUE_SIZE) {
+        cout << queueArray[i] << " -> "; 
+    }
+    cout << "TAIL\n"; //print TAIL behind also like the assignment project shows
+}
+
+bool Queue::isEmpty() const {
+    return head == tail;    // If head and tail are equal, the queue is empty
+}
+
+bool Queue::isFull() const {
+    return (tail + 1) % QUEUE_SIZE == head; //Found this from stack overflow
+}
