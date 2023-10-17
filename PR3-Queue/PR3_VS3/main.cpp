@@ -1,3 +1,14 @@
+
+//!________________________________________________
+// Driver/main Files (.cpp) 
+/******************************************************************** 
+*** NAME : JOHN AKUJOBI                                         *** 
+*** CLASS : CSC 300 - DATA STRUCTURES                           *** 
+*** ASSIGNMENT : Assignment #2 - Stack Testing                  *** 
+*** DUE DATE : 10-06-23                                         *** 
+*** INSTRUCTOR : GAMRADT                                        *** 
+*********************************************************************/
+
 //Description: This program tests the Queue class.
 /*
 Test Cases Included:
