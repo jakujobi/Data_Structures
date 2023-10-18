@@ -47,15 +47,22 @@ int main() {
     Queue copyQueue = defaultQueue;
     copyQueue.view();
     cout << "------------------------------------\n";
+    //it should show 5, -3
 
-    cout << "Test Case 4: Dequeue\n";
+    // // Test Case 4: Test Enqueue on Full Queue
+    // cout << "Test Case 4: Test Enqueue on Full Queue\n";
+    // defaultQueue.enqueue("6"); // it has a size of 3
+    // defaultQueue.enqueue("9"); // It should fail
+    // cout << "---------------------------\n";
+
+    cout << "Test Case 5: Dequeue\n";
     Element dequeuedElem;
     defaultQueue.dequeue(dequeuedElem);
     cout << "Dequeued Element: " << dequeuedElem << endl;
     defaultQueue.view();
     cout << "------------------------------------\n";
 
-    cout << "Test Case 5: Destructor\n";
+    cout << "Test Case 6: Destructor\n";
     {
         Queue destructorQueue;
         destructorQueue.enqueue(100);
@@ -63,6 +70,11 @@ int main() {
     }
     cout << "Destructor ran successfully.\n";
     cout << "------------------------------------\n";
+
+    // cout << "Test Case 7: Test Dequeue on Empty Queue\n";
+    // Queue emptyQueue(3);
+    // emptyQueue.dequeue(dequeuedElement);
+    // cout << "---------------------------\n";
 
     return 0;
 }
