@@ -6,6 +6,15 @@
 *** INSTRUCTOR : GAMRADT                                        *** 
 *********************************************************************/
 
+/* Description:
+The program is an implementation of a Queue data structure in C++. It is written to match the expectations of the instructor after seeing the results of the last program assignment.
+- It includes a default constructor, copy constructor, destructor, enqueue, dequeue, view, isEmpty, and isFull functions. 
+- The Queue is implemented using a dynamic array and circular indexing.
+- The copy constructor uses a temporary queue to copy elements from the original queue to the new queue. 
+- The view function prints the elements of the queue from head to tail. 
+- The isEmpty and isFull functions check if the queue is empty or full, respectively.
+*/
+
 #include "Queue.h"
 #include <iostream>
 #include <string>
@@ -25,8 +34,6 @@ Queue::Queue(int size) : QUEUE_SIZE(size), head(0), tail(0) {
 //         queueArray[i] = other.queueArray[i];
 //     }
 // }
-
-
 
 // Version 2, working well
 // Queue::Queue(Queue &other) : QUEUE_SIZE(other.QUEUE_SIZE), head(other.head), tail(other.tail) {
@@ -69,6 +76,7 @@ Queue::~Queue() {
     queueArray = nullptr; // Avoid the dangling pointer
 }
 
+//! Enqueue
 void Queue::enqueue (const Element item){
     if (!isFull()){ //checking if the queue is full, will go ahead if not full
         queueArray[tail] = item;
@@ -79,6 +87,7 @@ void Queue::enqueue (const Element item){
     }
 }
 
+//! Dequeue
 void Queue::dequeue(Element &stuff) {
     if (!isEmpty()) { //checking if the queue is empty, will go ahead if not empty
         stuff = queueArray[head];
@@ -88,6 +97,8 @@ void Queue::dequeue(Element &stuff) {
     }
 }
 
+//! View
+// Version 1 - Working well but may not be what the instructor liked
 // void Queue::view() {
 //     cout << "HEAD -> "; //print HEAD in front like the assignment project shows
 //     while (head != tail) {
@@ -118,10 +129,12 @@ void Queue::view() {
 }
 
 
+//! isEmpty
 bool Queue::isEmpty() const {
     return head == tail;    // If head and tail are equal, the queue is empty
 }
 
+//! isFull
 bool Queue::isFull() const {
     return (tail + 1) % QUEUE_SIZE == head; //Found this from stack overflow
 }

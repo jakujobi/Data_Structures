@@ -1,3 +1,17 @@
+/******************************************************************** 
+*** NAME : JOHN AKUJOBI                                         *** 
+*** CLASS : CSC 300 - DATA STRUCTURES                           *** 
+*** ASSIGNMENT : Assignment 3 - Queue                           *** 
+*** DUE DATE : 10-18-23                                         *** 
+*** INSTRUCTOR : GAMRADT                                        *** 
+*********************************************************************/
+
+/* Description:
+This code is for a Queue class with several member functions,
+including enqueue, dequeue, and view, which are used to add elements to the queue, remove elements from the queue, and view the contents of the queue, respectively.
+It was written by Ken Gamradt in the Assignment 3 project document
+*/
+
 #ifndef _QUEUE_H // Guard
 #define _QUEUE_H
 
