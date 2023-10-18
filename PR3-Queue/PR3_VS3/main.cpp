@@ -4,8 +4,8 @@
 /******************************************************************** 
 *** NAME : JOHN AKUJOBI                                         *** 
 *** CLASS : CSC 300 - DATA STRUCTURES                           *** 
-*** ASSIGNMENT : Assignment #2 - Stack Testing                  *** 
-*** DUE DATE : 10-06-23                                         *** 
+*** ASSIGNMENT : Assignment 3 - Queue                           *** 
+*** DUE DATE : 10-18-23                                         *** 
 *** INSTRUCTOR : GAMRADT                                        *** 
 *********************************************************************/
 
