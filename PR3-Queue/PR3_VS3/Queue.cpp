@@ -21,11 +21,25 @@ The program is an implementation of a Queue data structure in C++. It is written
 using namespace std;
 
 //!Default Constructor (default size is 3)
+/*********************************************************************
+*** FUNCTION Queue (Default Constructor) ***
+*********************************************************************
+*** DESCRIPTION : Class constructor to create a queue with default or given capacity ***
+*** INPUT ARGS : int size - queue capacity ***
+*** RETURN : None ***
+*********************************************************************/
 Queue::Queue(int size) : QUEUE_SIZE(size), head(0), tail(0) {
     queueArray = new Element[QUEUE_SIZE]; // Allocate dynamic array
 }
 
 //!Copy Constructor
+/*********************************************************************
+*** FUNCTION Queue (Copy Constructor) ***
+*********************************************************************
+*** DESCRIPTION : Class copy constructor to create a new queue as a copy of an existing queue ***
+*** INPUT ARGS : Queue &other - The queue to be copied ***
+*** RETURN : None ***
+*********************************************************************/
 // Version 1 - Working well
 // Queue::Queue( Queue & other) : QUEUE_SIZE (other.QUEUE_SIZE) { //gotten from last assignment
 //     queueArray = new Element[QUEUE_SIZE]; // Allocate dynamic array
@@ -66,6 +80,13 @@ Queue::Queue(Queue& other) : QUEUE_SIZE(other.QUEUE_SIZE), head(0), tail(0) {
 
 
 //!Destructor
+/*********************************************************************
+*** FUNCTION ~Queue (Destructor) ***
+*********************************************************************
+*** DESCRIPTION : Class destructor to deallocate dynamic array and clean up resources ***
+*** INPUT ARGS : None ***
+*** RETURN : None ***
+*********************************************************************/
 Queue::~Queue() {
     //pop off all the items in the queue
     while (!isEmpty()) {
@@ -77,6 +98,13 @@ Queue::~Queue() {
 }
 
 //! Enqueue
+/*********************************************************************
+*** FUNCTION enqueue ***
+*********************************************************************
+*** DESCRIPTION : Adds an element to the tail of the queue ***
+*** INPUT ARGS : const Element item - The item to be added ***
+*** RETURN : None ***
+*********************************************************************/
 void Queue::enqueue (const Element item){
     if (!isFull()){ //checking if the queue is full, will go ahead if not full
         queueArray[tail] = item;
@@ -88,6 +116,13 @@ void Queue::enqueue (const Element item){
 }
 
 //! Dequeue
+/*********************************************************************
+*** FUNCTION dequeue ***
+*********************************************************************
+*** DESCRIPTION : Removes an element from the head of the queue and returns it ***
+*** INPUT ARGS : Element &stuff - The item to be removed ***
+*** RETURN : None ***
+*********************************************************************/
 void Queue::dequeue(Element &stuff) {
     if (!isEmpty()) { //checking if the queue is empty, will go ahead if not empty
         stuff = queueArray[head];
@@ -98,6 +133,13 @@ void Queue::dequeue(Element &stuff) {
 }
 
 //! View
+/*********************************************************************
+*** FUNCTION view ***
+*********************************************************************
+*** DESCRIPTION : Displays the elements of the queue from head to tail ***
+*** INPUT ARGS : None ***
+*** RETURN : None ***
+*********************************************************************/
 // Version 1 - Working well but may not be what the instructor liked
 // void Queue::view() {
 //     cout << "HEAD -> "; //print HEAD in front like the assignment project shows
@@ -130,11 +172,25 @@ void Queue::view() {
 
 
 //! isEmpty
+/*********************************************************************
+*** FUNCTION isEmpty ***
+*********************************************************************
+*** DESCRIPTION : Checks if the queue is empty ***
+*** INPUT ARGS : None ***
+*** RETURN : bool - True if empty, false otherwise ***
+*********************************************************************/
 bool Queue::isEmpty() const {
     return head == tail;    // If head and tail are equal, the queue is empty
 }
 
 //! isFull
+/*********************************************************************
+*** FUNCTION isFull ***
+*********************************************************************
+*** DESCRIPTION : Checks if the queue is full ***
+*** INPUT ARGS : None ***
+*** RETURN : bool - True if full, false otherwise ***
+*********************************************************************/
 bool Queue::isFull() const {
     return (tail + 1) % QUEUE_SIZE == head; //Found this from stack overflow
 }
