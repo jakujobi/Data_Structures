@@ -1,3 +1,11 @@
+/******************************************************************** 
+*** NAME : JOHN AKUJOBI                                         *** 
+*** CLASS : CSC 300 - DATA STRUCTURES                           *** 
+*** ASSIGNMENT : Assignment 3 - Queue                           *** 
+*** DUE DATE : 10-18-23                                         *** 
+*** INSTRUCTOR : GAMRADT                                        *** 
+*********************************************************************/
+
 #include "Queue.h"
 #include <iostream>
 #include <string>
