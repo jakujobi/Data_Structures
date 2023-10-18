@@ -29,6 +29,35 @@ Destructor:
 using namespace std;
 
 int main() {
+    //Reconstruction of main.cpp from DR Gamradt's Error Screenshot
+    cout << "Test using Reconstructed main.cpp" << endl;
+    Queue q1, q2(5);  // Declare queues
+    Element element;  // Declare an Element variable
+
+    // Test view function
+    cout << "Viewing q1:" << endl;
+    q1.view();
+
+    // Test dequeue function
+    q1.dequeue(element);
+
+    // Test enqueue function
+    q1.enqueue(10);
+    q1.enqueue(20);
+    q1.enqueue(30);
+
+    // Test view function again
+    cout << "Viewing q1 again:" << endl;
+    q1.view();
+
+    // Test copy constructor
+    Queue q3(q2);
+    cout << "Viewing q3 (should be a copy of q2):" << endl;
+    q3.view();
+
+    cout << "\nEnd of the reconstructed main.cpp (constructed from the Error screenshot)\n------------------------------------\n\n";
+
+
     cout << "Test Case 1: Default Constructor and Enqueue\n";
     Queue defaultQueue;
     defaultQueue.enqueue(5);	// Enqueue elements that were shown in the assignment document
