@@ -111,7 +111,7 @@ void Queue::enqueue (const Element item){
         tail = (tail + 1) % QUEUE_SIZE; // Update tail index
     }
     else{
-        cout << "Umm...the queue is full!/nWe can't put " << item << " in there."<< endl;
+        cout << "Umm...the queue is full!\nWe can't put " << item << " in there."<< endl;
     }
 }
 
