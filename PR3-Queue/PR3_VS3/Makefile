@@ -1,11 +1,27 @@
-output: main.o Queue.o
-	g++ -std=c++11 -o output main.o Queue.o
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall
 
-main.o: main.cpp
-	g++ -std=c++11 -c main.cpp
+OBJS = main.o Queue.o
+EXEC = output
 
-Queue.o: Queue.h Queue.cpp
-	g++ -std=c++11 -c Queue.cpp
+all: $(EXEC)
+
+$(EXEC): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $<
 
 clean:
-	rm output main.o Queue.o
+	rm -f $(OBJS) $(EXEC)
+# output: main.o Queue.o
+# 	g++ -std=c++11 -o output main.o Queue.o
+#
+# main.o: main.cpp
+# 	g++ -std=c++11 -c main.cpp
+#
+# Queue.o: Queue.h Queue.cpp
+# 	g++ -std=c++11 -c Queue.cpp
+#
+# clean:
+# 	rm output main.o Queue.o
