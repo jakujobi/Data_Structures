@@ -8,6 +8,8 @@ Queue::Queue(int size) : QUEUE_SIZE(size), head(0), tail(0) {
     queueArray = new Element[QUEUE_SIZE]; // Allocate dynamic array
 }
 
+//!Copy Constructor
+// Version 1 - Working well
 // Queue::Queue( Queue & other) : QUEUE_SIZE (other.QUEUE_SIZE) { //gotten from last assignment
 //     queueArray = new Element[QUEUE_SIZE]; // Allocate dynamic array
 //     // Copy elements from the other queue
@@ -16,11 +18,34 @@ Queue::Queue(int size) : QUEUE_SIZE(size), head(0), tail(0) {
 //     }
 // }
 
-Queue::Queue(Queue &other) : QUEUE_SIZE(other.QUEUE_SIZE), head(other.head), tail(other.tail) {
+
+
+// Version 2, working well
+// Queue::Queue(Queue &other) : QUEUE_SIZE(other.QUEUE_SIZE), head(other.head), tail(other.tail) {
+//     queueArray = new Element[QUEUE_SIZE];
+//     // Copy elements
+//     for (short i = head; i != tail; i = (i + 1) % QUEUE_SIZE) {
+//         enqueue(other.queueArray[i]);
+//     }
+// }
+
+////Version 4 - Working now
+//Copy constructor - Made sure this followed the instructors pseudocode in the Queue lecture slides
+// Copy constructor
+Queue::Queue(Queue& other) : QUEUE_SIZE(other.QUEUE_SIZE), head(0), tail(0) {
     queueArray = new Element[QUEUE_SIZE];
-    // Copy elements
-    for (short i = head; i != tail; i = (i + 1) % QUEUE_SIZE) {
-        enqueue(other.queueArray[i]);
+    Queue tempQueue(QUEUE_SIZE); // Temporary Queue
+
+    // Copy elements from the original queue to the temporary queue
+    for (short i = other.head; i != other.tail; i = (i + 1) % other.QUEUE_SIZE) {
+        Element QueueElement = other.queueArray[i];
+        tempQueue.enqueue(QueueElement); // Temporary Queue
+    }
+
+    // Copy elements back to the new queue
+    for (short i = tempQueue.head; i != tempQueue.tail; i = (i + 1) % tempQueue.QUEUE_SIZE) {
+        Element QueueElement = tempQueue.queueArray[i];
+        enqueue(QueueElement); // New Queue
     }
 }
 
@@ -37,7 +62,7 @@ Queue::~Queue() {
 }
 
 void Queue::enqueue (const Element item){
-    if (!isFull()){ //cheching if the queue is full, will go ahead if not full
+    if (!isFull()){ //checking if the queue is full, will go ahead if not full
         queueArray[tail] = item;
         tail = (tail + 1) % QUEUE_SIZE; // Update tail index
     }
