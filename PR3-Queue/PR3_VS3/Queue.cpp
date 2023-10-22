@@ -111,7 +111,7 @@ void Queue::enqueue (const Element item){
         tail = (tail + 1) % QUEUE_SIZE; // Update tail index
     }
     else{
-        cout << "Umm...the queue is full!\nWe can't put " << item << " in there."<< endl;
+        cout << "Queue is full!"<< endl;
     }
 }
 
@@ -123,12 +123,12 @@ void Queue::enqueue (const Element item){
 *** INPUT ARGS : Element &stuff - The item to be removed ***
 *** RETURN : None ***
 *********************************************************************/
-void Queue::dequeue(Element &stuff) {
+void Queue::dequeue(Element &element) {
     if (!isEmpty()) { //checking if the queue is empty, will go ahead if not empty
-        stuff = queueArray[head];
+        element = queueArray[head];
         head = (head + 1) % QUEUE_SIZE;
     } else {
-        cout << "Yikes...The Queue is empty.\nSo, there's nothing to dequeue";  // Removed std::
+        cout << "Queue is empty!";  // Removed std::
     }
 }
 
