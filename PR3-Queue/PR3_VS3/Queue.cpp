@@ -31,20 +31,21 @@ using namespace std;
 // Queue::Queue(int size) : QUEUE_SIZE(size), head(0), tail(0) {
 //     queueArray = new Element[QUEUE_SIZE]; // Allocate dynamic array
 // }
-// Queue::Queue(int size) : QUEUE_SIZE(size), head(-1), tail(-1) {
-//     queueArray = new (nothrow) Element[QUEUE_SIZE];  // Dynamic memory allocation with new (nothrow)
-//     if (!queueArray) {
-//         cerr << "Memory allocation failed." << endl;
-//         exit(1);
-//     }
-// }
-Queue::Queue(int size) : QUEUE_SIZE(size), head(0), tail(0) {
+Queue::Queue(int size) : QUEUE_SIZE(size), head(-1), tail(-1) {
     queueArray = new (nothrow) Element[QUEUE_SIZE];  // Dynamic memory allocation with new (nothrow)
     if (!queueArray) {
         cerr << "Memory allocation failed." << endl;
         exit(1);
     }
 }
+
+// Queue::Queue(int size) : QUEUE_SIZE(size), head(0), tail(0) {
+//     queueArray = new (nothrow) Element[QUEUE_SIZE];  // Dynamic memory allocation with new (nothrow)
+//     if (!queueArray) {
+//         cerr << "Memory allocation failed." << endl;
+//         exit(1);
+//     }
+// }
 
 
 
@@ -77,23 +78,8 @@ Queue::Queue(int size) : QUEUE_SIZE(size), head(0), tail(0) {
 ////Version 4 - Working now
 //Copy constructor - Made sure this followed the instructors pseudocode in the Queue lecture slides
 // Copy constructor
-Queue::Queue(Queue& other) : QUEUE_SIZE(other.QUEUE_SIZE), head(0), tail(0) {
-    queueArray = new Element[QUEUE_SIZE];
-    Queue tempQueue(QUEUE_SIZE); // Temporary Queue
 
-    // Copy elements from the original queue to the temporary queue
-    for (short i = other.head; i != other.tail; i = (i + 1) % other.QUEUE_SIZE) {
-        Element QueueElement = other.queueArray[i];
-        tempQueue.enqueue(QueueElement); // Temporary Queue
-    }
-
-    // Copy elements back to the new queue
-    for (short i = tempQueue.head; i != tempQueue.tail; i = (i + 1) % tempQueue.QUEUE_SIZE) {
-        Element QueueElement = tempQueue.queueArray[i];
-        enqueue(QueueElement); // New Queue
-    }
-}
-// Queue::Queue(Queue& other) : QUEUE_SIZE(other.QUEUE_SIZE), head(-1), tail(-1) {
+// Queue::Queue(Queue& other) : QUEUE_SIZE(other.QUEUE_SIZE), head(0), tail(0) {
 //     queueArray = new Element[QUEUE_SIZE];
 //     Queue tempQueue(QUEUE_SIZE); // Temporary Queue
 
@@ -109,6 +95,23 @@ Queue::Queue(Queue& other) : QUEUE_SIZE(other.QUEUE_SIZE), head(0), tail(0) {
 //         enqueue(QueueElement); // New Queue
 //     }
 // }
+
+Queue::Queue(Queue& other) : QUEUE_SIZE(other.QUEUE_SIZE), head(-1), tail(-1) {
+    queueArray = new Element[QUEUE_SIZE];
+    Queue tempQueue(QUEUE_SIZE); // Temporary Queue
+
+    // Copy elements from the original queue to the temporary queue
+    for (short i = other.head; i != other.tail; i = (i + 1) % other.QUEUE_SIZE) {
+        Element QueueElement = other.queueArray[i];
+        tempQueue.enqueue(QueueElement); // Temporary Queue
+    }
+
+    // Copy elements back to the new queue
+    for (short i = tempQueue.head; i != tempQueue.tail; i = (i + 1) % tempQueue.QUEUE_SIZE) {
+        Element QueueElement = tempQueue.queueArray[i];
+        enqueue(QueueElement); // New Queue
+    }
+}
 
 
 //!Destructor
@@ -139,8 +142,8 @@ Queue::~Queue() {
 *********************************************************************/
 void Queue::enqueue (const Element item){
     if (!isFull()){ //checking if the queue is full, will go ahead if not full
-        queueArray[tail] = item;
         tail = (tail + 1) % QUEUE_SIZE; // Update tail index
+        queueArray[tail] = item;
     }
     else{
         cout << "Queue is full!"<< endl;
@@ -157,8 +160,8 @@ void Queue::enqueue (const Element item){
 *********************************************************************/
 void Queue::dequeue(Element &element) {
     if (!isEmpty()) { //checking if the queue is empty, will go ahead if not empty
-        element = queueArray[head];
         head = (head + 1) % QUEUE_SIZE;
+        element = queueArray[head];
     } else {
         cout << "Queue is empty!";  // Removed std::
     }
