@@ -1,15 +1,15 @@
-/********************************************************************
-*** NAME : John Akujobi ***
-*** CLASS : CSc 300 ***
-*** ASSIGNMENT : 4 ***
-*** DUE DATE : 11-08-23 ***
-*** INSTRUCTOR : GAMRADT ***
-*********************************************************************
-*** DESCRIPTION : This implementation file defines the functions for ***
-*** the Binary Search Tree (BST) Abstract Data Type (ADT). It includes ***
-*** methods for inserting, removing, and searching for elements as ***
+/**************************************************************************
+*** NAME : John Akujobi                                                 ***
+*** CLASS : CSc 300 - Data Structures                                   ***
+*** ASSIGNMENT : 4                                                      ***
+*** DUE DATE : 11-08-23                                                 ***
+*** INSTRUCTOR : GAMRADT                                                ***
+***************************************************************************
+*** DESCRIPTION : This implementation file defines the functions for    ***
+*** the Binary Search Tree (BST) Abstract Data Type (ADT). It includes  ***
+*** methods for inserting, removing, and searching for elements as      ***
 *** well as traversing the tree in pre-order, in-order, and post-order. ***
-********************************************************************/
+***************************************************************************/
 
 #include "BST.h"
 #include <iostream>
@@ -17,15 +17,17 @@
 // Default constructor
 /********************************************************************
 *** FUNCTION BST ***
-*********************************************************************
-*** DESCRIPTION : Constructs an empty Binary Search Tree. ***
-*** INPUT ARGS : None ***
-*** OUTPUT ARGS : None ***
-*** IN/OUT ARGS : None ***
-*** RETURN : None ***
+***********************************************************************
+*** DESCRIPTION : Constructs an empty Binary Search Tree.           ***
+*** INPUT ARGS : None                                               ***
+*** OUTPUT ARGS : None                                              ***
+*** IN/OUT ARGS : None                                              ***
+*** RETURN : None                                                   ***
 ********************************************************************/
 BST::BST() : root(nullptr) {}
 
+
+//TODO copy constructor
 // Copy constructor
 /********************************************************************
 *** FUNCTION BST (copy constructor) ***
@@ -42,6 +44,8 @@ BST::BST(const BST &source) : root(nullptr) {
     }
 }
 
+
+//TODO destructor
 // Destructor
 /********************************************************************
 *** FUNCTION ~BST ***
@@ -56,6 +60,8 @@ BST::~BST() {
     destroy(root);
 }
 
+
+//TODO insert
 // Insert a new key node to the BST
 /********************************************************************
 *** FUNCTION insert ***
@@ -70,6 +76,8 @@ void BST::insert(const Element element) {
     insert(root, element);
 }
 
+
+//TODO remove
 // Locate and remove an existing key node from the BST
 /********************************************************************
 *** FUNCTION remove ***
@@ -84,6 +92,8 @@ void BST::remove(const Element element) {
     remove(root, element);
 }
 
+
+//TODO search
 // Return a pointer to an existing key node in the BST, otherwise NULL
 /********************************************************************
 *** FUNCTION search ***
@@ -98,9 +108,12 @@ NodePtr BST::search(const Element element) const {
     return search(root, element);
 }
 
+
+//TODO preorderView
 // Display the keys in the BST from top to bottom (left to right)
 /********************************************************************
-*** FUNCTION preorderView ***
+**
+//* FUNCTION preorderView ***
 *********************************************************************
 *** DESCRIPTION : Displays the keys in the BST from top to bottom (left to right). ***
 *** INPUT ARGS : None ***
@@ -112,6 +125,8 @@ void BST::preorderView() const {
     preorderView(root);
 }
 
+
+//TODO inorderView
 // Display the keys in the BST in ascending order
 /********************************************************************
 *** FUNCTION inorderView ***
@@ -126,6 +141,8 @@ void BST::inorderView() const {
     inorderView(root);
 }
 
+
+//TODO postorderView
 // Display the keys in the BST from bottom to top (left to right)
 /********************************************************************
 *** FUNCTION postorderView ***
@@ -140,8 +157,10 @@ void BST::postorderView() const {
     postorderView(root);
 }
 
+
 // !Private member functions_____________________________________________________________________________________________________________________
 
+//TODO copy
 // Recursively copy an existing BST
 /********************************************************************
 *** FUNCTION copy ***
@@ -156,6 +175,8 @@ void BST::copy(const NodePtr source) {
     // Implementation goes here
 }
 
+
+//TODO destroy (recursive version)
 // Recursively remove all key nodes from the BST
 /********************************************************************
 *** FUNCTION destroy ***
@@ -170,6 +191,8 @@ void BST::destroy(NodePtr &tree) {
     // Implementation goes here
 }
 
+
+//TODO removeNode
 // Remove an existing key node from the BST
 /********************************************************************
 *** FUNCTION removeNode ***
@@ -184,6 +207,8 @@ void BST::removeNode(NodePtr &tree) {
     // Implementation goes here
 }
 
+
+//TODO findMaxNode
 // Find the maximum key node in the left subtree of the BST
 /********************************************************************
 *** FUNCTION findMaxNode ***
@@ -198,6 +223,8 @@ void BST::findMaxNode(NodePtr &tree, NodePtr &maxNode) {
     // Implementation goes here
 }
 
+
+//TODO insert (recursive version)
 // Recursive version of insert
 /********************************************************************
 *** FUNCTION insert (recursive version) ***
@@ -212,6 +239,8 @@ void BST::insert(NodePtr &tree, const Element element) {
     // Implementation goes here
 }
 
+
+//TODO remove (recursive version)
 // Recursive version of remove
 /********************************************************************
 *** FUNCTION remove (recursive version) ***
@@ -226,6 +255,8 @@ void BST::remove(NodePtr &tree, const Element element) {
     // Implementation goes here
 }
 
+
+//TODO search (recursive version)
 // Recursive version of search
 /********************************************************************
 *** FUNCTION search (recursive version) ***
@@ -240,6 +271,8 @@ NodePtr BST::search(const NodePtr tree, const Element element) const {
     // Implementation goes here
 }
 
+
+//TODO preorderView (recursive version)
 // Recursive version of preorderView
 /********************************************************************
 *** FUNCTION preorderView (recursive version) ***
@@ -254,6 +287,8 @@ void BST::preorderView(const NodePtr tree) const {
     // Implementation goes here
 }
 
+
+//TODO inorderView (recursive version)
 // Recursive version of inorderView
 /********************************************************************
 *** FUNCTION inorderView (recursive version) ***
@@ -268,6 +303,8 @@ void BST::inorderView(const NodePtr tree) const {
     // Implementation goes here
 }
 
+
+//TODO postorderView (recursive version)
 // Recursive version of postorderView
 /********************************************************************
 *** FUNCTION postorderView (recursive version) ***
