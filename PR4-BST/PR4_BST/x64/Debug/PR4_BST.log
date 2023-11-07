@@ -1,2 +1,10 @@
 ﻿  BST.cpp
+D:\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR4-BST\PR4_BST\BST.cpp(52,33): warning C4101: 'e': unreferenced local variable
+D:\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR4-BST\PR4_BST\BST.cpp(91,33): warning C4101: 'e': unreferenced local variable
+D:\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR4-BST\PR4_BST\BST.cpp(115,33): warning C4101: 'e': unreferenced local variable
+D:\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR4-BST\PR4_BST\BST.cpp(137,33): warning C4101: 'e': unreferenced local variable
+D:\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR4-BST\PR4_BST\BST.cpp(160,33): warning C4101: 'e': unreferenced local variable
+D:\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR4-BST\PR4_BST\BST.cpp(182,33): warning C4101: 'e': unreferenced local variable
+D:\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR4-BST\PR4_BST\BST.cpp(204,33): warning C4101: 'e': unreferenced local variable
+D:\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR4-BST\PR4_BST\BST.cpp(382,33): warning C4101: 'e': unreferenced local variable
   PR4_BST.vcxproj -> D:\OneDrive - South Dakota State University - SDSU\#SDSU Courses\CSC 300 - Data Structures\Data_Structures\PR4-BST\PR4_BST\x64\Debug\PR4_BST.exe
