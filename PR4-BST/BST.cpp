@@ -24,7 +24,9 @@
 *** IN/OUT ARGS : None                                              ***
 *** RETURN : None                                                   ***
 ********************************************************************/
-BST::BST() : root(nullptr) {}
+BST::BST() : root(nullptr) {
+
+}
 
 
 //TODO copy constructor
@@ -205,6 +207,9 @@ void BST::destroy(NodePtr &tree) {
 ********************************************************************/
 void BST::removeNode(NodePtr &tree) {
     // Implementation goes here
+
+
+    //Search for the node to be removed
 }
 
 
@@ -221,6 +226,14 @@ void BST::removeNode(NodePtr &tree) {
 ********************************************************************/
 void BST::findMaxNode(NodePtr &tree, NodePtr &maxNode) {
     // Implementation goes here
+
+    //If the tree is empty, return null
+
+    //If the tree is not empty, find the maximum key node in the left subtree
+
+    //Go to the left subtree
+
+    //Traverse to the right continously until the right subtree is empty
 }
 
 
@@ -236,7 +249,23 @@ void BST::findMaxNode(NodePtr &tree, NodePtr &maxNode) {
 *** RETURN : None ***
 ********************************************************************/
 void BST::insert(NodePtr &tree, const Element element) {
-    // Implementation goes here
+    // If the tree is empty, create a new node
+    if (tree == nullptr) {
+        tree = new Node;
+        tree->element = element;    // Set the element
+        tree->left = nullptr;       // Set left and right children to null
+        tree->right = nullptr;
+    }
+    
+    // If the element is less than the current node, insert to the left
+    else if (element < tree->element) {
+        insert(tree->left, element);
+    }
+    
+    // If the element is greater than the current node, insert to the right
+    else if (element > tree->element) {
+        insert(tree->right, element);
+    }
 }
 
 
@@ -253,6 +282,17 @@ void BST::insert(NodePtr &tree, const Element element) {
 ********************************************************************/
 void BST::remove(NodePtr &tree, const Element element) {
     // Implementation goes here
+
+    //If the tree is empty, return null and tell the user that the BST is empty
+    if (tree == nullptr) {
+        cout << "The BST is empty. Cannot remove a node." << endl;
+        return;
+    }
+
+    else {
+        //Search for the node to be removed
+
+    }
 }
 
 
@@ -269,6 +309,18 @@ void BST::remove(NodePtr &tree, const Element element) {
 ********************************************************************/
 NodePtr BST::search(const NodePtr tree, const Element element) const {
     // Implementation goes here
+
+    //If the tree is empty, return null
+    if (tree == nullptr) {
+        return nullptr;
+    }
+
+    //and tell the user that the element is not in the BST because it is empty
+
+
+    //If the element is less than the current node, search the left subtree
+
+    //If the element is greater than the current node, search the right subtree
 }
 
 
@@ -285,6 +337,9 @@ NodePtr BST::search(const NodePtr tree, const Element element) const {
 ********************************************************************/
 void BST::preorderView(const NodePtr tree) const {
     // Implementation goes here
+
+    //If the tree is empty, return null
+
 }
 
 
@@ -301,6 +356,8 @@ void BST::preorderView(const NodePtr tree) const {
 ********************************************************************/
 void BST::inorderView(const NodePtr tree) const {
     // Implementation goes here
+
+    //If the tree is empty, return null and tell the user that the BST is empty
 }
 
 
@@ -317,4 +374,6 @@ void BST::inorderView(const NodePtr tree) const {
 ********************************************************************/
 void BST::postorderView(const NodePtr tree) const {
     // Implementation goes here
+
+    //If the tree is empty, return null and tell the user that the BST is empty
 }

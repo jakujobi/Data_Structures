@@ -17,10 +17,16 @@
 #include <ctime>
 
 //This includes some tests that were refined by an online unit tests generator.
-//Code from stackoverflow responses were used in coming up with some of these tests and how they work
+//Code from stackoverflow responses, and geeksforgeeks were used in coming up with some of these tests and how they work
+
+int randomize()  
+{    
+    return (rand() % 1000);  
+} 
 
 int main() {
     BST myTree;
+    srand(time(NULL));  
 
     // Test 1: Insertion and Inorder Traversal
     cout << "Test 1: Insertion and Inorder Traversal\n";
@@ -104,8 +110,10 @@ int main() {
     cout << "\nTest 14: Searching for elements at different positions\n";
     assert(myTree.search(2) != nullptr); // Leaf
     assert(myTree.search(75) != nullptr); // Internal node
+    assert(myTree.search(randomize()) == nullptr); // Non-existent
     assert(myTree.search(99) != nullptr); // Root
     assert(myTree.search(101) == nullptr); // Non-existent
+    assert(myTree.search(randomize()) == nullptr); // Random element
 
     // Test 15: Stress test with random insertions and deletions
     cout << "\nTest 15: Stress test with random insertions and deletions\n";
