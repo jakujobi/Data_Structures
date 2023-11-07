@@ -190,7 +190,24 @@ void BST::copy(const NodePtr source) {
 *** RETURN : None ***
 ********************************************************************/
 void BST::destroy(NodePtr &tree) {
-    // Implementation goes here
+    //If the tree is empty, return
+    if (tree == nullptr) {
+        cout << "The BST is empty. Cannot destroy the tree." << endl;
+        return;
+    }
+
+    else {
+        if (tree->left != nullptr) {
+            destroy(tree->left);
+        }
+
+        if (tree->right != nullptr) {
+            destroy(tree->right);
+        }
+
+        delete tree;
+
+    }
 }
 
 
@@ -206,10 +223,41 @@ void BST::destroy(NodePtr &tree) {
 *** RETURN : None ***
 ********************************************************************/
 void BST::removeNode(NodePtr &tree) {
-    // Implementation goes here
+    //If the tree is empty, return
+    if (tree == nullptr) {
+        cout << "The BST is empty. Cannot remove a node." << endl;
+        return;
+    }
 
+    //If the tree is not empty, remove the node
+    else {
+        //Search for the node to be removed
+        tree = search(tree, tree->element);
 
-    //Search for the node to be removed
+        if (tree->left == nullptr && tree->right == nullptr) {
+            delete tree;
+            tree = nullptr;
+        }
+
+        else if (tree->left != nullptr && tree->right == nullptr) {
+            NodePtr temp = tree;
+            tree = tree->left;
+            delete temp;
+        }
+
+        else if (tree->left == nullptr && tree->right != nullptr) {
+            NodePtr temp = tree;
+            tree = tree->right;
+            delete temp;
+        }
+
+        else {
+            NodePtr maxNode = nullptr;
+            findMaxNode(tree->left, maxNode);
+            tree->element = maxNode->element;
+            remove(tree->left, maxNode->element);
+        }
+    }
 }
 
 
@@ -228,12 +276,24 @@ void BST::findMaxNode(NodePtr &tree, NodePtr &maxNode) {
     // Implementation goes here
 
     //If the tree is empty, return null
+    if (tree == nullptr) {
+        cout << "The BST is empty. Cannot find the maximum node." << endl;
+        return;
+    }
 
     //If the tree is not empty, find the maximum key node in the left subtree
+    else{
+        //Go to the left subtree
+        tree = tree->left;
 
-    //Go to the left subtree
+        //Traverse to the right continously until the right subtree is empty
+        while (tree->right != nullptr) {
+            tree = tree->right;
+        }
 
-    //Traverse to the right continously until the right subtree is empty
+        //Set the maximum key node
+        maxNode = tree;
+    }
 }
 
 
@@ -339,7 +399,7 @@ NodePtr BST::search(const NodePtr tree, const Element element) const {
 /********************************************************************
 *** FUNCTION preorderView (recursive version) ***
 *********************************************************************
-*** DESCRIPTION : Recursively displays the keys in the BST from top to bottom (left to right). ***
+*** DESCRIPTION : Recursively displays the keys in the BST from top to bottom (left to right). CLR***
 *** INPUT ARGS : const NodePtr tree ***
 *** OUTPUT ARGS : None ***
 *** IN/OUT ARGS : None ***
@@ -354,20 +414,20 @@ void BST::preorderView(const NodePtr tree) const {
         return;
     }
 
-    //print the data of the current node
-    cout << tree->element << " ";
+    else {
+        //print the data of the current node
+        cout << tree->element << " ";
 
-    //print the dat on the left child
-    if (tree->left != nullptr) {
-        cout << tree->left->element << " ";
+        //print the data on the left child
+        if (tree->left != nullptr) {
+            preorderView(tree->left);
+        }
+
+        //print the data on the right child
+        if (tree->right != nullptr) {
+            preorderView(tree->right);
+        }
     }
-
-
-    //print the data on the right child
-    if (tree->right != nullptr){
-        preorderView(tree->right);
-    }
-
 }
 
 
@@ -376,7 +436,7 @@ void BST::preorderView(const NodePtr tree) const {
 /********************************************************************
 *** FUNCTION inorderView (recursive version) ***
 *********************************************************************
-*** DESCRIPTION : Recursively displays the keys in the BST in ascending order. ***
+*** DESCRIPTION : Recursively displays the keys in the BST in ascending order.LCR ***
 *** INPUT ARGS : const NodePtr tree ***
 *** OUTPUT ARGS : None ***
 *** IN/OUT ARGS : None ***
@@ -389,17 +449,19 @@ void BST::inorderView(const NodePtr tree) const {
         return;
     }
 
-    //Print the data of the left child
-    if (tree->left != nullptr) {
-        inorderView(tree->left);
-    }
+    else{
+        //print the left child
+        if (tree->left != nullptr) {
+            inorderView(tree->left);
+        }
 
-    //Print the data of the current node
-    cout << tree->element << " ";
+        //print the current node
+        cout << tree->element << " ";
 
-    //Print the data of the right child
-    if (tree->right != nullptr) {
-        inorderView(tree->right);
+        //print the right child
+        if (tree->right != nullptr) {
+            inorderView(tree->right);
+        }
     }
 }
 
@@ -409,14 +471,31 @@ void BST::inorderView(const NodePtr tree) const {
 /********************************************************************
 *** FUNCTION postorderView (recursive version) ***
 *********************************************************************
-*** DESCRIPTION : Recursively displays the keys in the BST from bottom to top (left to right). ***
+*** DESCRIPTION : Recursively displays the keys in the BST from bottom to top (left to right). RCL ***
 *** INPUT ARGS : const NodePtr tree ***
 *** OUTPUT ARGS : None ***
 *** IN/OUT ARGS : None ***
 *** RETURN : None ***
 ********************************************************************/
 void BST::postorderView(const NodePtr tree) const {
-    // Implementation goes here
-
     //If the tree is empty, return null and tell the user that the BST is empty
+    if (tree == nullptr) {
+        cout << "The BST is empty. Cannot display the tree." << endl;
+        return;
+    }
+
+    else {
+        //print the left child
+        if (tree->left != nullptr) {
+            postorderView(tree->left);
+        }
+
+        //print the current node
+        cout << tree->element << " ";
+        
+        //print the right child
+        if (tree->right != nullptr) {
+            postorderView(tree->right);
+        }
+    }
 }
