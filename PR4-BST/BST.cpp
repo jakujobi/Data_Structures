@@ -311,16 +311,26 @@ NodePtr BST::search(const NodePtr tree, const Element element) const {
     // Implementation goes here
 
     //If the tree is empty, return null
+    //and tell the user that the element is not in the BST because it is empty
     if (tree == nullptr) {
+        cout << "The BST is empty. Cannot search for a node." << endl;
         return nullptr;
     }
 
-    //and tell the user that the element is not in the BST because it is empty
-
+    //If the element is equal to the current node, return the current node
+    else if (element == tree->element) {
+        return tree;
+    }
 
     //If the element is less than the current node, search the left subtree
+    else if (element < tree->element) {
+        return search(tree->left, element);
+    }
 
     //If the element is greater than the current node, search the right subtree
+    else if (element > tree->element){
+        return search(tree->right, element);
+    }
 }
 
 
@@ -339,6 +349,24 @@ void BST::preorderView(const NodePtr tree) const {
     // Implementation goes here
 
     //If the tree is empty, return null
+    if (tree == nullptr) {
+        cout << "The BST is empty. Cannot display the tree." << endl;
+        return;
+    }
+
+    //print the data of the current node
+    cout << tree->element << " ";
+
+    //print the dat on the left child
+    if (tree->left != nullptr) {
+        cout << tree->left->element << " ";
+    }
+
+
+    //print the data on the right child
+    if (tree->right != nullptr){
+        preorderView(tree->right);
+    }
 
 }
 
@@ -355,9 +383,24 @@ void BST::preorderView(const NodePtr tree) const {
 *** RETURN : None ***
 ********************************************************************/
 void BST::inorderView(const NodePtr tree) const {
-    // Implementation goes here
-
     //If the tree is empty, return null and tell the user that the BST is empty
+    if (tree == nullptr) {
+        cout << "The BST is empty. Cannot display the tree." << endl;
+        return;
+    }
+
+    //Print the data of the left child
+    if (tree->left != nullptr) {
+        inorderView(tree->left);
+    }
+
+    //Print the data of the current node
+    cout << tree->element << " ";
+
+    //Print the data of the right child
+    if (tree->right != nullptr) {
+        inorderView(tree->right);
+    }
 }
 
 
