@@ -1,15 +1,16 @@
-
-//!_______________________________________________________________
-/******************************************************************** 
-*** NAME : JOHN AKUJOBI                                         *** 
-*** CLASS : CSC 300 - DATA STRUCTURES                           *** 
-*** ASSIGNMENT : Assignment //!# - ###############              *** 
-*** DUE DATE : //!                                               *** 
-*** INSTRUCTOR : GAMRADT                                        *** 
-*********************************************************************/
-/********************************************************************* 
-*** DESCRIPTION : //!############################################
-*********************************************************************/
+//BST.h
+/**************************************************************************
+*** NAME : John Akujobi                                                 ***
+*** CLASS : CSc 300 - Data Structures                                   ***
+*** ASSIGNMENT : 4                                                      ***
+*** DUE DATE : 11-08-23                                                 ***
+*** INSTRUCTOR : GAMRADT                                                ***
+***************************************************************************
+*** DESCRIPTION : This implementation file defines the functions for    ***
+*** the Binary Search Tree (BST) Abstract Data Type (ADT). It includes  ***
+*** methods for inserting, removing, and searching for elements as      ***
+*** well as traversing the tree in pre-order, in-order, and post-order. ***
+***************************************************************************/
 
 // Binary Search Tree ADT
 // Supported operations: 

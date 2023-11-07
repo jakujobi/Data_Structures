@@ -1,3 +1,4 @@
+//BST.cpp
 /**************************************************************************
 *** NAME : John Akujobi                                                 ***
 *** CLASS : CSc 300 - Data Structures                                   ***
@@ -143,15 +144,14 @@ NodePtr BST::search(const Element element) const {
 
 //! preorderView
 // Display the keys in the BST from top to bottom (left to right)
-/********************************************************************
-**
-//* FUNCTION preorderView ***
+//********************************************************************
+/* FUNCTION preorderView ***
 *********************************************************************
 *** DESCRIPTION : Displays the keys in the BST from top to bottom (left to right). ***
-*** INPUT ARGS : None ***
-*** OUTPUT ARGS : None ***
-*** IN/OUT ARGS : None ***
-*** RETURN : None ***
+*** INPUT ARGS : None   ***
+*** OUTPUT ARGS : None  ***
+*** IN/OUT ARGS : None  ***
+*** RETURN : None       ***
 ********************************************************************/
 void BST::preorderView() const {
     try {
