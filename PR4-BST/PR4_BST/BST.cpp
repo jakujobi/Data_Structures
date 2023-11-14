@@ -270,6 +270,39 @@ void BST::destroy(NodePtr &tree) {
 }
 
 
+
+//! remove (recursive version)
+// Recursive version of remove
+/********************************************************************
+*** FUNCTION remove (recursive version) ***
+*********************************************************************
+*** DESCRIPTION : Recursively removes an existing key node from the BST. ***
+*** INPUT ARGS : NodePtr &tree, const Element element ***
+*** OUTPUT ARGS : None ***
+*** IN/OUT ARGS : None ***
+*** RETURN : None ***
+********************************************************************/
+void BST::remove(NodePtr &tree, const Element element) {
+    //If the tree is not empty, remove the node
+    if (tree != nullptr) {
+        //Search for the node to be removed
+        tree = search(tree, tree->element);
+        if (tree == nullptr) {
+			cout << "The element does not exist in the BST." << endl;
+			return;
+		}
+
+        removeNode(tree);
+    }
+
+    else {
+        cout << "The BST is empty. Cannot remove a node." << endl;
+        return;
+    }
+}
+
+
+
 //! removeNode
 // Remove an existing key node from the BST
 /********************************************************************
@@ -474,37 +507,6 @@ void BST::insert(NodePtr &tree, const Element value) {
     //else if (element == tree->element) 
     else {
         cout << "The element already exists in the BST." << endl;
-        return;
-    }
-}
-
-
-//! remove (recursive version)
-// Recursive version of remove
-/********************************************************************
-*** FUNCTION remove (recursive version) ***
-*********************************************************************
-*** DESCRIPTION : Recursively removes an existing key node from the BST. ***
-*** INPUT ARGS : NodePtr &tree, const Element element ***
-*** OUTPUT ARGS : None ***
-*** IN/OUT ARGS : None ***
-*** RETURN : None ***
-********************************************************************/
-void BST::remove(NodePtr &tree, const Element element) {
-    //If the tree is not empty, remove the node
-    if (tree != nullptr) {
-        //Search for the node to be removed
-        tree = search(tree, tree->element);
-        if (tree == nullptr) {
-			cout << "The element does not exist in the BST." << endl;
-			return;
-		}
-
-        removeNode(tree);
-    }
-
-    else {
-        cout << "The BST is empty. Cannot remove a node." << endl;
         return;
     }
 }
