@@ -69,7 +69,13 @@ BST::BST(const BST& source) : root(nullptr) {
 *** RETURN : None ***
 ********************************************************************/
 BST::~BST() {
+    // //If the tree is empty, return
+    // if (root == nullptr) {
+    //     cout << "The BST is empty. Cannot destroy the tree." << endl;
+    //     return;
+    // }
     destroy(root);
+    delete root;
     root = nullptr;
 }
 
@@ -109,9 +115,9 @@ void BST::insert(const Element element) {
 ********************************************************************/
 void BST::remove(const Element element) {
     try {
-        if (root != nullptr) {
+        //if (root != nullptr) {
             remove(root, element);
-        }
+        //}
     }
     catch (const runtime_error& e) {
         throw runtime_error("Could not remove from the BST");
@@ -155,7 +161,9 @@ NodePtr BST::search(const Element element) const {
 ********************************************************************/
 void BST::preorderView() const {
     try {
+        cout << "BEGIN -> ";
         preorderView(root);
+        cout << "END" << endl;
     }
     catch (const runtime_error& e) {
         throw runtime_error("Could not preorder view the BST");
@@ -177,7 +185,9 @@ void BST::preorderView() const {
 ********************************************************************/
 void BST::inorderView() const {
     try {
+        cout << "BEGIN -> ";
         inorderView(root);
+        cout << "END" << endl;
     }
     catch (const runtime_error& e) {
         throw runtime_error("Could not inorder view the BST");
@@ -199,7 +209,9 @@ void BST::inorderView() const {
 ********************************************************************/
 void BST::postorderView() const {
     try {
+        cout << "BEGIN -> ";
         postorderView(root);
+        cout << "END" << endl;
     }
     catch (const runtime_error& e) {
         throw runtime_error("Could not remove from the BST");
@@ -244,13 +256,7 @@ void BST::copy(const NodePtr sourceRoot) {
 *** RETURN : None ***
 ********************************************************************/
 void BST::destroy(NodePtr &tree) {
-    //If the tree is empty, return
-    if (tree == nullptr) {
-        cout << "The BST is empty. Cannot destroy the tree." << endl;
-        return;
-    }
-
-    else {
+    if (tree != nullptr) {
         //if the tree has a left child, destroy it
         //if (tree->left != nullptr) {
             destroy(tree->left);
@@ -280,24 +286,43 @@ void BST::destroy(NodePtr &tree) {
 *** IN/OUT ARGS : None ***
 *** RETURN : None ***
 ********************************************************************/
-void BST::remove(NodePtr &tree, const Element element) {
-    //If the tree is not empty, remove the node
-    if (tree != nullptr) {
-        //Search for the node to be removed
-        tree = search(tree, tree->element);
-        if (tree == nullptr) {
-			cout << "The element does not exist in the BST." << endl;
-			return;
-		}
-        removeNode(tree);
-    }
+// void BST::remove(NodePtr &tree, const Element element) {
+//     //If the tree is not empty, remove the node
+//     if (tree != nullptr) {
+//         //Search for the node to be removed
+//         tree = search(tree, tree->element);
+//         if (tree == nullptr) {
+// 			cout << "The element does not exist in the BST." << endl;
+// 			return;
+// 		}
+//         removeNode(tree);
+//     }
 
-    else {
-        cout << "The BST is empty. Cannot remove a node." << endl;
+//     else {
+//         cout << "The BST is empty. Cannot remove a node." << endl;
+//         return;
+//     }
+// }
+void BST::remove(NodePtr &tree, const Element element) {
+    // If the tree is empty, return
+    if (tree == nullptr) {
+        cout << "Cannot remove the node." << endl;
         return;
     }
-}
 
+    // If the element to be removed is less than the current node's element, go to the left subtree
+    if (element < tree->element) {
+        remove(tree->left, element);
+    }
+    // If the element to be removed is greater than the current node's element, go to the right subtree
+    else if (element > tree->element) {
+        remove(tree->right, element);
+    }
+    // Found the node with the element
+    else {
+        removeNode(tree);
+    }
+}
 
 
 //! removeNode
@@ -503,7 +528,7 @@ void BST::insert(NodePtr &tree, const Element value) {
 
     //else if (element == tree->element) 
     else {
-        cout << "The element already exists in the BST." << endl;
+        cout << "The element, " << value << ", already exists in the BST." << endl;
         return;
     }
 }
@@ -562,15 +587,13 @@ NodePtr BST::search(const NodePtr tree, const Element element) const {
 *** RETURN : None ***
 ********************************************************************/
 void BST::preorderView(const NodePtr tree) const {
-    // Implementation goes here
+    // //If the tree is empty, return null
+    // if (tree == nullptr) {
+    //     cout << "The BST is empty. Cannot display the tree." << endl;
+    //     return;
+    // }
 
-    //If the tree is empty, return null
-    if (tree == nullptr) {
-        cout << "The BST is empty. Cannot display the tree." << endl;
-        return;
-    }
-
-    else {
+    if (tree != nullptr) {
         //print the data of the current node
         cout << tree->element << " -> ";
 
@@ -620,13 +643,13 @@ void BST::inorderView(const NodePtr tree) const {
 *** RETURN : None ***
 ********************************************************************/
 void BST::postorderView(const NodePtr tree) const {
-    //If the tree is empty, return null and tell the user that the BST is empty
-    if (tree == nullptr) {
-        cout << "The BST is empty. Cannot display the tree." << endl;
-        return;
-    }
+    // //If the tree is empty, return null and tell the user that the BST is empty
+    // if (tree == nullptr) {
+    //     cout << "The BST is empty. Cannot display the tree." << endl;
+    //     return;
+    // }
 
-    else {
+    if (tree != nullptr) {
         //print the left child
         if (tree->left != nullptr) {
             postorderView(tree->left);
