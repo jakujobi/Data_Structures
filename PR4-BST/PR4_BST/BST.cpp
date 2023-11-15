@@ -247,8 +247,6 @@ void BST::destroy(NodePtr &tree) {
     //If the tree is empty, return
     if (tree == nullptr) {
         cout << "The BST is empty. Cannot destroy the tree." << endl;
-        tree = nullptr;
-        delete tree;
         return;
     }
 
@@ -264,8 +262,8 @@ void BST::destroy(NodePtr &tree) {
         //}
 
         //delete the current node
-        tree = nullptr;
         delete tree;
+        tree = nullptr;
     }
 }
 
@@ -291,7 +289,6 @@ void BST::remove(NodePtr &tree, const Element element) {
 			cout << "The element does not exist in the BST." << endl;
 			return;
 		}
-
         removeNode(tree);
     }
 
