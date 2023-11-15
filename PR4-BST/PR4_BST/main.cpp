@@ -41,31 +41,31 @@ int main() {
     cout << "Expected: Ordered sequence from 0 to 9\n"; // Expected: Ordered sequence from 0 to 9
 
     // Test 2: Duplicate Insertion
-    cout << "\nTest 2: Duplicate Insertion\n\n";
+    cout << "\n\nTest 2: Duplicate Insertion\n\n";
     myTree.insert(5);
     myTree.inorderView(); // Expected: No change, duplicates ignored
     cout << "Expected: No change, duplicates ignored\n\n";
 
     // Test 3: Deletion of Non-Existent Element
-    cout << "\nTest 3: Deletion of Non-Existent Element\n";
+    cout << "\n\nTest 3: Removal of Non-Existent Element\n";
     myTree.remove(10);
     myTree.inorderView(); // Expected: No change, element not found
     cout << "Expected: No change, element not found\n\n";
 
     // Test 4: Deletion of Leaf Node
-    cout << "\nTest 4: Deletion of Leaf Node\n";
+    cout << "\n\nTest 4: Deletion of Leaf Node\n";
     myTree.remove(0);
     myTree.inorderView(); // Expected: Sequence from 1 to 9
     cout << "Expected: Sequence from 1 to 9\n\n";
 
     // Test 5: Deletion of Node with One Child
-    cout << "\nTest 5: Deletion of Node with One Child\n";
+    cout << "\n\nTest 5: Deletion of Node with One Child\n";
     myTree.remove(8);
     myTree.inorderView(); // Expected: Sequence from 1 to 7, then 9
     cout << "Expected: Sequence from 1 to 7, then 9\n\n";
 
     // Test 6: Deletion of Node with Two Children
-    cout << "\nTest 6: Deletion of Node with Two Children\n";
+    cout << "\n\nTest 6: Deletion of Node with Two Children\n";
     myTree.remove(5);
     myTree.inorderView(); // Expected: Sequence from 1 to 4, then 6 to 7, then 9
     cout << "Expected: Sequence from 1 to 4, then 6 to 7, then 9\n\n";
@@ -76,36 +76,36 @@ int main() {
     //assert(myTree.search(10) == nullptr); // Should not find element
 
     // Test 8: Preorder and Postorder Traversal
-    cout << "\nTest 8: Preorder and Postorder Traversal\n";
+    cout << "\n\nTest 8: Preorder and Postorder Traversal\n";
     myTree.preorderView(); // Expected: Preorder sequence
     cout << "\n";
     myTree.postorderView(); // Expected: Postorder sequence
     cout << "\n\n";
 
     // Test 8.5 : Copy Constructor
-    cout << "\nTest 8.5: Copy Constructor\n";
+    cout << "\n\nTest 8.5: Copy Constructor\n";
     BST newTree(myTree);
     cout << "Copy constructor worked\n";
     newTree.inorderView();
     cout << "\n\n";
 
     // Test 9: Clearing the Tree
-    cout << "\nTest 9: Clearing the Tree\n";
+    cout << "\n\nTest 9: Clearing the Tree\n";
     newTree.~BST(); // Destructor
     newTree.inorderView(); // Expected: BEGIN -> END (Empty tree)
     cout << "Expected: BEGIN -> END (Empty tree)\n\n";
 
     // Test 10: Large Number of Elements
-    cout << "\nTest 10: Large Number of Elements\n";
+    cout << "\n\nTest 10: Large Number of Elements\n";
     for (int i = 0; i < 1000; ++i) {
         myTree.insert(i);
     }
-    myTree.inorderView(); // Expected: Ordered sequence from 1 to 999
-    cout << "Expected: Ordered sequence from 1 to 999\n\n";
+    myTree.inorderView(); // Expected: Ordered sequence from 0 to 999
+    cout << "Expected: Ordered sequence from 0 to 999\n\n";
 
     // Additional rigorous tests
     // Test 11: Removing root repeatedly
-    cout << "\nTest 11: Removing root repeatedly\n";
+    cout << "\n\nTest 11: Removing root repeatedly\n";
     myTree.remove(20); // Remove current root
     for (int i = 999; i >= 0; --i) {
         myTree.remove(i); // Remove new root each time
@@ -114,7 +114,7 @@ int main() {
     cout << "Expected: BEGIN -> END (Empty tree)\n\n";
 
     // Test 12: Inserting in descending order
-    cout << "\nTest 12: Inserting in descending order\n";
+    cout << "\n\nTest 12: Inserting in descending order\n";
     for (int i = 100; i > 0; --i) {
         myTree.insert(i);
     }
@@ -122,7 +122,7 @@ int main() {
     cout << "Expected: Ordered sequence from 1 to 100\n\n";
 
     // Test 13: Removing leaves, internal nodes, and root
-    cout << "\nTest 13: Removing leaves, internal nodes, and root\n";
+    cout << "\n\nTest 13: Removing leaves, internal nodes, and root\n";
     myTree.remove(1); // Remove leaf
     myTree.remove(50); // Remove internal node
     myTree.remove(100); // Remove root
