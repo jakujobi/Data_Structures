@@ -29,8 +29,7 @@ using namespace std;
 *** RETURN : None                                                   ***
 ********************************************************************/
 BST::BST() : root(nullptr) {
-    root = nullptr;
-    //This indicates that the tree is empty
+    root = nullptr;    //This indicates that the tree is empty
 }
 
 
@@ -286,23 +285,6 @@ void BST::destroy(NodePtr &tree) {
 *** IN/OUT ARGS : None ***
 *** RETURN : None ***
 ********************************************************************/
-// void BST::remove(NodePtr &tree, const Element element) {
-//     //If the tree is not empty, remove the node
-//     if (tree != nullptr) {
-//         //Search for the node to be removed
-//         tree = search(tree, tree->element);
-//         if (tree == nullptr) {
-// 			cout << "The element does not exist in the BST." << endl;
-// 			return;
-// 		}
-//         removeNode(tree);
-//     }
-
-//     else {
-//         cout << "The BST is empty. Cannot remove a node." << endl;
-//         return;
-//     }
-// }
 void BST::remove(NodePtr &tree, const Element element) {
     // If the tree is empty, return
     if (tree == nullptr) {
@@ -336,75 +318,6 @@ void BST::remove(NodePtr &tree, const Element element) {
 *** IN/OUT ARGS : None ***
 *** RETURN : None ***
 ********************************************************************/
-// void BST::removeNode(NodePtr &tree) {
-//     //If the tree is empty, return
-//     if (tree!=nullptr) {
-//         //If the node is a leaf node, that is, has no children, delete the node
-//         if (tree->left == nullptr && tree->right == nullptr) {
-//             delete tree;
-//             tree = nullptr;
-//             return;
-//         }
-
-//         //If the node has one child on the left, delete the node and replace it with the left child
-//         else if (tree->left != nullptr && tree->right == nullptr) {
-//             NodePtr temp = tree;
-//             tree = tree->left;
-//             temp = nullptr;
-//             delete temp;
-//             return;
-//         }
-
-//         //If the node has one child on the right, delete the node and replace it with the right child
-//         else if (tree->left == nullptr && tree->right != nullptr) {
-//             NodePtr temp = tree;
-//             tree = tree->right;
-//             temp = nullptr;
-//             delete temp;
-//             return;
-//         }
-
-//         //If the node has two children, find the maximum key node in the left subtree and replace the node with the maximum key
-//         else if (tree->left != nullptr && tree->right != nullptr) {
-//             // NodePtr maxNode = nullptr;
-//             // findMaxNode(tree->left, maxNode);
-//             // tree->element = maxNode->element;
-//             // delete maxNode;
-
-//             NodePtr maxNode, maxNodeParent, temp;
-
-//             temp = tree->left;
-
-//             findMaxNode(temp, maxNode); // Find the maximum node in the left subtree
-//             maxNodeParent = tree; // The parent of the maxNode is the node to be removed
-//             tree->element = maxNode->element; // Replace the node's element with the max node's element
-
-//             if (maxNodeParent->left == maxNode) {
-//                 maxNodeParent->left = maxNode->left; // Replace maxNode with its left child
-//             }
-//             else {
-//                 maxNodeParent->right = maxNode->left; // Replace maxNode with its left child
-//             }
-
-//             temp = nullptr;
-//             maxNode = nullptr;
-//             maxNodeParent = nullptr;
-
-//             delete maxNode; // Delete the maxNode
-//             delete temp;
-//             delete maxNodeParent;
-
-//             return;
-//         }
-//     }
-
-//     else {
-//         cout << "The BST is empty. Cannot remove from the tree." << endl;
-//         tree = nullptr;
-//         return;
-//     }
-// }
-
 void BST::removeNode(NodePtr &tree) {
     // If the tree is empty, return
     if (tree == nullptr) {
@@ -587,12 +500,6 @@ NodePtr BST::search(const NodePtr tree, const Element element) const {
 *** RETURN : None ***
 ********************************************************************/
 void BST::preorderView(const NodePtr tree) const {
-    // //If the tree is empty, return null
-    // if (tree == nullptr) {
-    //     cout << "The BST is empty. Cannot display the tree." << endl;
-    //     return;
-    // }
-
     if (tree != nullptr) {
         //print the data of the current node
         cout << tree->element << " -> ";
@@ -622,7 +529,6 @@ void BST::preorderView(const NodePtr tree) const {
 *** RETURN : None ***
 ********************************************************************/
 void BST::inorderView(const NodePtr tree) const {
-    //If the tree is empty, return null and tell the user that the BST is empty
     if (tree != nullptr) {
         inorderView(tree->left);           // Visit left subtree
         cout << tree->element << " -> "; // Visit node
@@ -643,12 +549,6 @@ void BST::inorderView(const NodePtr tree) const {
 *** RETURN : None ***
 ********************************************************************/
 void BST::postorderView(const NodePtr tree) const {
-    // //If the tree is empty, return null and tell the user that the BST is empty
-    // if (tree == nullptr) {
-    //     cout << "The BST is empty. Cannot display the tree." << endl;
-    //     return;
-    // }
-
     if (tree != nullptr) {
         //print the left child
         if (tree->left != nullptr) {
