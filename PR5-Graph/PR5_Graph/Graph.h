@@ -19,23 +19,22 @@
 #include <iostream>
 #include <string>
 #pragma once
-
 using namespace std;
-/*
-General description of the ADT and supported operations – exportable operations only
-*/
+
 
 class Graph {
 public: 
-    // exportable
-    
-    // General description of each of the ADT operations/functions – exportable operations only
     explicit Graph(const string = "data.dat");
+
     ~Graph();
+
     void dijkstra();
     
 private: 
-    // non-exportable
+    Element cost[GRAPH_LIMIT][GRAPH_LIMIT];
+    Element distance[GRAPH_LIMIT]; 
+    bool visited[GRAPH_LIMIT];
+    unsigned short nodeCount;
     
     // No private member documentation – implementation details are hidden/abstracted away
     typedef unsigned short Element;
@@ -47,11 +46,6 @@ private:
     unsigned short setStart() const;
     void view() const;
     bool restart() const;
-    
-    Element cost[GRAPH_LIMIT][GRAPH_LIMIT];
-    Element distance[GRAPH_LIMIT]; 
-    bool visited[GRAPH_LIMIT];
-    unsigned short nodeCount;
 };
 
 #endif // _PROJECT_H //! #Change this to the right one
