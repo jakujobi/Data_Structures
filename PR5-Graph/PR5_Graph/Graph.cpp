@@ -264,26 +264,21 @@ void Graph::setVisited() {
 unsigned short Graph::setStart() const {
     unsigned short startNode;
     while (true) {
-        // Prompt user for the starting node
         cout << "Enter the starting node (0 to " << nodeCount - 1 << "): ";
         cin >> startNode;
 
-        // Validate the user input
         if (cin.fail() || startNode >= nodeCount) {
-            // If input is not a number or out of range, show error message
             cerr << "Invalid input. Please enter a node number between 0 and "
                 << nodeCount - 1 << "." << endl;
-            
-            // Clear the error state of cin and ignore the rest of the input line
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //learned this from stackoverflow
-            continue; // Continue prompting the user
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;   //learned from one of my cs250 code
         }
 
-        break; // Valid input received, exit the loop
+        break;
     }
 
-    startingNode = startNode; // Set the starting node for the graph
+    return startNode; // Return the validated starting node
 }
 
 /********************************************************************
@@ -312,6 +307,9 @@ void Graph::view() const {
 *** FUNCTION restart ***
 *********************************************************************
 *** DESCRIPTION : Prompts the user to see if they wish to run Dijkstra's algorithm again using the same graph. ***
+***               It can only accept 'Y' or 'N' as input. ***
+***               It will recursively call itself if the user enters an invalid input.
+***               It can't change any members of the class because it is a const function.
 *** INPUT ARGS : None ***
 *** OUTPUT ARGS : None ***
 *** IN/OUT ARGS : None ***
@@ -332,5 +330,3 @@ bool Graph::restart() const {
         return restart(); // Recursively call restart to handle invalid inputs
     }
 }
-
-// Add other non-exportable functions as needed
