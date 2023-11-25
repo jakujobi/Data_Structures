@@ -24,9 +24,37 @@ using namespace std;
 
 class Graph {
 public: 
+        /********************************************************************
+    *** FUNCTION Graph ***
+    *********************************************************************
+    *** DESCRIPTION : Constructs a Graph object by reading data from a file and initializing the graph. ***
+    *** INPUT ARGS : const string fileName - The name of the file containing graph data ***
+    *** OUTPUT ARGS : None ***
+    *** IN/OUT ARGS : None ***
+    *** RETURN : None ***
+    ********************************************************************/
     explicit Graph(const string = "data.dat");
 
+    /********************************************************************
+    *** FUNCTION ~Graph ***
+    *********************************************************************
+    *** DESCRIPTION : Destroys the Graph object and deallocates any dynamic memory. ***
+    *** INPUT ARGS : None ***
+    *** OUTPUT ARGS : None ***
+    *** IN/OUT ARGS : None ***
+    *** RETURN : None ***
+    ********************************************************************/
     ~Graph();
+
+    /********************************************************************
+    *** FUNCTION dijkstra ***
+    *********************************************************************
+    *** DESCRIPTION : Performs Dijkstra's algorithm on the graph to find the shortest path. ***
+    *** INPUT ARGS : None ***
+    *** OUTPUT ARGS : None ***
+    *** IN/OUT ARGS : None ***
+    *** RETURN : None ***
+    ********************************************************************/
 
     void dijkstra();
     
