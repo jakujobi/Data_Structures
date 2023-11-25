@@ -262,7 +262,28 @@ void Graph::setVisited() {
 *** RETURN : unsigned short - The validated starting node. ***
 ********************************************************************/
 unsigned short Graph::setStart() const {
-    // Implementation will go here
+    unsigned short startNode;
+    while (true) {
+        // Prompt user for the starting node
+        cout << "Enter the starting node (0 to " << nodeCount - 1 << "): ";
+        cin >> startNode;
+
+        // Validate the user input
+        if (cin.fail() || startNode >= nodeCount) {
+            // If input is not a number or out of range, show error message
+            cerr << "Invalid input. Please enter a node number between 0 and "
+                << nodeCount - 1 << "." << endl;
+            
+            // Clear the error state of cin and ignore the rest of the input line
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //learned this from stackoverflow
+            continue; // Continue prompting the user
+        }
+
+        break; // Valid input received, exit the loop
+    }
+
+    startingNode = startNode; // Set the starting node for the graph
 }
 
 /********************************************************************
@@ -288,7 +309,19 @@ void Graph::view() const {
 *** RETURN : bool - True if the user wishes to run the algorithm again, false otherwise. ***
 ********************************************************************/
 bool Graph::restart() const {
-    // Implementation will go here
+    char choice;
+    cout << "Do you want to run Dijkstra's algorithm again? (Y/N): ";
+    cin >> choice;
+
+    // Validate user input
+    if (tolower(choice) == 'y') {
+        return true; // User wants to run the algorithm again
+    } else if (tolower(choice) == 'n') {
+        return false; // User does not want to run the algorithm again
+    } else {
+        cerr << "Invalid input. Please enter 'Y' for yes or 'N' for no." << endl;
+        return restart(); // Recursively call restart to handle invalid inputs
+    }
 }
 
 // Add other non-exportable functions as needed
