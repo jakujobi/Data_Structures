@@ -31,8 +31,8 @@ using namespace std;
 *** IN/OUT ARGS : None ***
 *** RETURN : None ***
 ********************************************************************/
-Graph::Graph(const string fileName) {
-    // Implementation will go here
+Graph::Graph(const string fileName = "data.dat") {
+    setGraph(fileName);
 }
 
 /********************************************************************
@@ -108,9 +108,81 @@ void Graph::dijkstra(unsigned short startingVertex) {
 *** IN/OUT ARGS : None ***
 *** RETURN : None ***
 ********************************************************************/
-void Graph::setGraph(const string fileName) {
-    // Implementation will go here
+void Graph::setGraph(const string& fileName) {
+    // ifstream file(fileName);
+    
+    // if (!file) {
+    //     cerr << "Error opening file: " << fileName << endl;
+    //     return;
+    // }
+
+    // // Read the number of nodes
+    // file >> nodeCount;
+    // if (nodeCount > GRAPH_LIMIT) {
+    //     cerr << "Node count exceeds graph limit." << endl;
+    //     return;
+    // }
+
+    // // Initialize the cost matrix with USHRT_MAX
+    // for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
+    //     for (unsigned short j = 0; j < GRAPH_LIMIT; ++j) {
+    //         cost[i][j] = USHRT_MAX;
+    //     }
+    // }
+
+    // // Read the adjacency matrix from the file
+    // unsigned short tempCost;
+    // for (unsigned short i = 0; i < nodeCount; ++i) {
+    //     for (unsigned short j = 0; j < nodeCount; ++j) {
+    //         file >> tempCost;
+    //         cost[i][j] = (tempCost == 0 && i != j) ? USHRT_MAX : tempCost;
+    //     }
+    // }
+
+    // file.close();
+
+    ifstream file(fileName);
+
+    // Check if the file is successfully opened
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open file '" << fileName << "'." << endl;
+        throw runtime_error("File open error");
+    }
+
+    // Read the number of nodes and validate
+    unsigned short nodes;
+    file >> nodes;
+    if (file.fail()) {
+        cerr << "Error: Invalid format for the number of nodes." << endl;
+        throw runtime_error("File format error");
+    }
+    if (nodes > GRAPH_LIMIT) {
+        cerr << "Error: Node count exceeds the graph limit." << endl;
+        throw runtime_error("Node count exceeds limit");
+    }
+
+    // Initialize adjacency matrix
+    for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
+        for (unsigned short j = 0; j < GRAPH_LIMIT; ++j) {
+            cost[i][j] = USHRT_MAX;
+        }
+    }
+
+    // Read adjacency matrix values
+    for (unsigned short i = 0; i < nodes; ++i) {
+        for (unsigned short j = 0; j < nodes; ++j) {
+            unsigned int weight;
+            if (!(file >> weight)) {
+                cerr << "Error: Invalid weight value in the graph." << endl;
+                throw runtime_error("Invalid weight value");
+            }
+            cost[i][j] = (weight == 0 && i != j) ? USHRT_MAX : static_cast<unsigned short>(weight);
+        }
+    }
+
+    file.close();
 }
+
 
 /********************************************************************
 *** FUNCTION setVisited ***
