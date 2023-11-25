@@ -76,7 +76,7 @@ private:
     unsigned short nodeCount;
 
     //Added private functions
-    void dijkstraPrivate(unsigned short startingVertex);
+    void dijkstraPrivate();
     void graphPrivateConstructor(const string& name);
     
 
