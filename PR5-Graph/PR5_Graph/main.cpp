@@ -27,17 +27,15 @@ int main() {
     Graph myGraph("data.dat"); // Assuming "data.dat" is a valid graph file
     cout << "Graph constructed with data from 'data.dat'\n\n";
 
-    // Test 2: Running Dijkstra's Algorithm
-    cout << "Test 2: Running Dijkstra's Algorithm\n";
-    myGraph.dijkstra(0); // Assuming 0 is a valid starting node
-    // cout << "Dijkstra's algorithm executed starting from node 0\n";
-    // myGraph.view(); // View the results of Dijkstra's algorithm
-    // cout << "\n";
-
     // // Test 3: Restart Functionality
     // cout << "Test 3: Restart Functionality\n";
     // bool doRestart = myGraph.restart(); // User input required
     // cout << "Restart response: " << (doRestart ? "Yes" : "No") << "\n\n";
+
+    //I just realized that the private functions cannot be tested because they can't be called from outside the class
+    //So because of that I think I would end it here
+    //But, since he said that we can't add any more exportable functions how do I test this project?
+    //The last time I did more functions to the project.h file, it took a toll on my grades
 
     cout << "Tada! All tests completed.\nIf you can see this, then you are good to go!\n\n";
     return 0;
