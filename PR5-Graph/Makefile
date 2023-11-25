@@ -1,11 +1,11 @@
-output: main.o Project.o
-	g++ -std=c++11 -o output main.o Project.o
+output: main.o Graph.o
+	g++ -std=c++11 -o output main.o Graph.o
 
 main.o: main.cpp
 	g++ -std=c++11 -c main.cpp
 
-Project.o: Project.h Project.cpp
-	g++ -std=c++11 -c Project.cpp
+Graph.o: Graph.h Graph.cpp
+	g++ -std=c++11 -c Graph.cpp
 
 clean:
-	rm output main.o Project.o
+	rm output main.o Graph.o
