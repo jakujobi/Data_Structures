@@ -32,23 +32,7 @@ using namespace std;
 *** RETURN : None ***
 ********************************************************************/
 Graph::Graph(const string fileName = "data.dat") {
-    // Initial setup: Initialize arrays
-    for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
-        distance[i] = USHRT_MAX;   // Initialize all distances as infinite or the maximum value of unsigned short
-        visited[i] = false;
-        for (unsigned short j = 0; j < GRAPH_LIMIT; ++j) {
-            cost[i][j] = USHRT_MAX;
-        }
-    }
-
-    // Call setGraph to start the graph with data from the file
-    try {
-        setGraph(fileName);
-    } catch (const std::runtime_error& e) {
-        // Handle any errors encountered in setGraph, like prof Gramradt mentioned
-        cerr << "Error in initializing the graph: " << e.what() << endl;
-        // Set the state of the object to indicate unsuccessful initialization
-    }   //Learned about this from stackoverflow
+    graphPrivateConstructor(fileName);
 }
 
 /********************************************************************
@@ -85,6 +69,33 @@ void Graph::dijkstra() {
 //! Private member functions_____________________________________________________________________________________________________________
 //!______________________________________________________________________________________________________________________________________
 
+/********************************************************************
+*** FUNCTION graphPrivateConstructor ***
+*********************************************************************
+*** DESCRIPTION : Initializes the Graph object. This function is ***
+*** called by the Graph constructor to set up the initial state  ***
+*** of the Graph object, including initializing arrays and       ***
+*** loading graph data from a file.                              ***
+*** INPUT ARGS : const string& fileName - The name of the file   ***
+*** containing graph data.                                       ***
+*** OUTPUT ARGS : None                                           ***
+*** IN/OUT ARGS : None                                           ***
+*** RETURN : None                                                ***
+********************************************************************/
+void Graph::graphPrivateConstructor(const string& fileName) {
+    // Initialize member variables, such as setting all distances to USHRT_MAX
+    // and all visited flags to false
+    for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
+        distance[i] = USHRT_MAX;
+        visited[i] = false;
+        for (unsigned short j = 0; j < GRAPH_LIMIT; ++j) {
+            cost[i][j] = USHRT_MAX;
+        }
+    }
+
+    // Call setGraph to initialize the graph with data from the file
+    setGraph(fileName);
+}
 
 /********************************************************************
 *** FUNCTION dijkstra ***

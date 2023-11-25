@@ -77,7 +77,8 @@ private:
 
     //Added private functions
     void dijkstraPrivate(unsigned short startingVertex);
-    Graph(const Graph &) = delete;
+    void graphPrivateConstructor(const string& name);
+    
 
     //Added member variables
     unsigned short startingVertex;
