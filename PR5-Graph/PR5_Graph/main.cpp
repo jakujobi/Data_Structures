@@ -1,24 +1,26 @@
 //main.cpp
 
 //!_______________________________________________________________
-// Driver/main Files (.cpp) 
-/******************************************************************** 
-*** NAME : JOHN AKUJOBI                                         *** 
-*** CLASS : CSC 300 - DATA STRUCTURES                           *** 
-*** ASSIGNMENT : Assignment //!# - ###############              *** 
-*** DUE DATE : //!                                               *** 
-*** INSTRUCTOR : GAMRADT                                        *** 
-*********************************************************************/
-/********************************************************************* 
-*** DESCRIPTION : //!############################################
-*********************************************************************/
+/********************************************************************
+*** NAME : John Doe                                            ***
+*** CLASS : CSc 300 - DATA STRUCTURES                           ***
+*** ASSIGNMENT : 5                                             ***
+*** DUE DATE : 11-29-23                                        ***
+*** INSTRUCTOR : GAMRADT                                       ***
+*********************************************************************
+*** DESCRIPTION : This program is designed to test the Graph   ***
+*** ADT implementation. It includes various tests to ensure    ***
+*** the correctness and robustness of the Graph class. The     ***
+*** tests cover graph construction, Dijkstra's algorithm, and  ***
+*** other utility functions like view, restart, setVisited,    ***
+*** and setStart.                                              ***
+********************************************************************/
 
+#include "Graph.h"
 #include <iostream>
-#include "Project.h" //!### Change this to the right .h file
-
+//#include <cassert>
 using namespace std;
 
-int main (){
+int main() {
 
-    return 0;
 }
