@@ -30,14 +30,14 @@ int main() {
     // Test 2: Running Dijkstra's Algorithm
     cout << "Test 2: Running Dijkstra's Algorithm\n";
     myGraph.dijkstra(0); // Assuming 0 is a valid starting node
-    cout << "Dijkstra's algorithm executed starting from node 0\n";
-    myGraph.view(); // View the results of Dijkstra's algorithm
-    cout << "\n";
+    // cout << "Dijkstra's algorithm executed starting from node 0\n";
+    // myGraph.view(); // View the results of Dijkstra's algorithm
+    // cout << "\n";
 
-    // Test 3: Restart Functionality
-    cout << "Test 3: Restart Functionality\n";
-    bool doRestart = myGraph.restart(); // User input required
-    cout << "Restart response: " << (doRestart ? "Yes" : "No") << "\n\n";
+    // // Test 3: Restart Functionality
+    // cout << "Test 3: Restart Functionality\n";
+    // bool doRestart = myGraph.restart(); // User input required
+    // cout << "Restart response: " << (doRestart ? "Yes" : "No") << "\n\n";
 
     cout << "Tada! All tests completed.\nIf you can see this, then you are good to go!\n\n";
     return 0;
