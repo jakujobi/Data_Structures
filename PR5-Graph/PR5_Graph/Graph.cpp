@@ -18,7 +18,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
-#include <climits>
+#include <climits>  // For USHRT_MAX. Learned about this from Jack
 
 using namespace std;
 
