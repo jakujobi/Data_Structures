@@ -32,6 +32,15 @@ using namespace std;
 *** RETURN : None ***
 ********************************************************************/
 Graph::Graph(const string fileName = "data.dat") {
+    // Initial setup: Initialize arrays
+    for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
+        distance[i] = USHRT_MAX;   // Initialize all distances as infinite or the maximum value of unsigned short
+        visited[i] = false;
+        for (unsigned short j = 0; j < GRAPH_LIMIT; ++j) {
+            cost[i][j] = USHRT_MAX;
+        }
+    }
+
     setGraph(fileName);
 }
 
