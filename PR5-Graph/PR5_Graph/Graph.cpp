@@ -74,7 +74,28 @@ Graph::~Graph() {
 *** IN/OUT ARGS : None ***
 *** RETURN : None ***
 ********************************************************************/
-void Graph::dijkstra(unsigned short startingVertex) {
+void Graph::dijkstra() {
+    // Call dijkstraPrivate with the starting vertex as 0
+    dijkstraPrivate();
+}
+
+
+
+
+//! Private member functions_____________________________________________________________________________________________________________
+//!______________________________________________________________________________________________________________________________________
+
+
+/********************************************************************
+*** FUNCTION dijkstra ***
+*********************************************************************
+*** DESCRIPTION : Performs Dijkstra's algorithm on the graph to find the shortest path. ***
+*** INPUT ARGS : None ***
+*** OUTPUT ARGS : None ***
+*** IN/OUT ARGS : None ***
+*** RETURN : None ***
+********************************************************************/
+void Graph::dijkstraPrivate(unsigned short startingVertex = 0) {
     //Lets make sure that the starting vertex is valid. Like, its not greater than the number of nodes in the graph
     //Coz if it isn't, its gonna throw an exception
     if (startingVertex >= nodeCount) {
@@ -112,10 +133,6 @@ void Graph::dijkstra(unsigned short startingVertex) {
     }
 }
 
-
-//! Private member functions_____________________________________________________________________________________________________________
-//!______________________________________________________________________________________________________________________________________
-
 /********************************************************************
 *** FUNCTION setGraph ***
 *********************************************************************
@@ -125,7 +142,7 @@ void Graph::dijkstra(unsigned short startingVertex) {
 *** IN/OUT ARGS : None ***
 *** RETURN : None ***
 ********************************************************************/
-void Graph::setGraph(const string& fileName) {
+void Graph::setGraph(const string fileName = "data.dat") {
     ifstream file(fileName);
 
     // Check if the file is successfully opened
@@ -135,13 +152,12 @@ void Graph::setGraph(const string& fileName) {
     }
 
     // Read the number of nodes and validate
-    unsigned short nodes;
-    file >> nodes;
+    file >> nodeCount;
     if (file.fail()) {
         cerr << "Error: Invalid format for the number of nodes." << endl;
         throw runtime_error("File format error");
     }
-    if (nodes > GRAPH_LIMIT) {
+    if (nodeCount > GRAPH_LIMIT) {
         cerr << "Error: Node count exceeds the graph limit." << endl;
         throw runtime_error("Node count exceeds limit");
     }
@@ -149,19 +165,19 @@ void Graph::setGraph(const string& fileName) {
     // Initialize adjacency matrix
     for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
         for (unsigned short j = 0; j < GRAPH_LIMIT; ++j) {
-            cost[i][j] = USHRT_MAX;
+            cost[i][j] = (i == j) ? 0 : USHRT_MAX;
         }
     }
 
     // Read adjacency matrix values
-    for (unsigned short i = 0; i < nodes; ++i) {
-        for (unsigned short j = 0; j < nodes; ++j) {
-            unsigned int weight;
+    for (unsigned short i = 0; i < nodeCount; ++i) {
+        for (unsigned short j = 0; j < nodeCount; ++j) {
+            unsigned short weight;
             if (!(file >> weight)) {
                 cerr << "Error: Invalid weight value in the graph." << endl;
                 throw runtime_error("Invalid weight value");
             }
-            cost[i][j] = (weight == 0 && i != j) ? USHRT_MAX : static_cast<unsigned short>(weight);
+            cost[i][j] = weight;
         }
     }
 
@@ -204,7 +220,8 @@ unsigned short Graph::setStart() const {
             cerr << "Invalid input. Please enter a node number between 0 and "
                 << nodeCount - 1 << "." << endl;
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            //cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.ignore();
             continue;   //learned from one of my cs250 code
         }
 
@@ -224,15 +241,17 @@ unsigned short Graph::setStart() const {
 *** RETURN : None ***
 ********************************************************************/
 void Graph::view() const {
+    // Ensure that the function only reads from the Graph object and doesn't modify its state
+
+    cout << "Shortest path distances from the start node:" << endl;
     for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
         cout << "Distance[" << i << "] = ";
-        if (i == startingNode) {
-            cout << "0"; // Distance to the start node itself is always 0
+        if (distance[i] == USHRT_MAX) {
+            cout << "Infinity"; // No path to this node or distance is not calculated
         } else {
-            cout << ((distance[i] == USHRT_MAX) ? "65535" : to_string(distance[i]));
-            // Display 65535 for unreachable nodes, otherwise display the distance
+            cout << distance[i]; // Display the calculated shortest path distance
         }
-        cout << endl; // Each distance on a separate line for clarity
+        cout << endl;
     }
 }
 

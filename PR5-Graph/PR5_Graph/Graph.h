@@ -64,7 +64,6 @@ private:
     typedef unsigned short Element;
     enum {GRAPH_LIMIT = 15};
     
-    Graph(const Graph &) = delete;
     void setGraph(const string); 
     void setVisited();
     unsigned short setStart() const;
@@ -75,6 +74,15 @@ private:
     Element distance[GRAPH_LIMIT]; 
     bool visited[GRAPH_LIMIT];
     unsigned short nodeCount;
+
+    //Added private functions
+    void dijkstraPrivate(unsigned short startingVertex);
+    Graph(const Graph &) = delete;
+
+    //Added member variables
+    unsigned short startingVertex;
+
+
 };
 
 //#endif // _PROJECT_H //! #Change this to the right one
