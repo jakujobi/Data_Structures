@@ -31,10 +31,6 @@ public:
     void dijkstra();
     
 private: 
-    Element cost[GRAPH_LIMIT][GRAPH_LIMIT];
-    Element distance[GRAPH_LIMIT]; 
-    bool visited[GRAPH_LIMIT];
-    unsigned short nodeCount;
     
     // No private member documentation – implementation details are hidden/abstracted away
     typedef unsigned short Element;
@@ -46,6 +42,11 @@ private:
     unsigned short setStart() const;
     void view() const;
     bool restart() const;
+
+    Element cost[GRAPH_LIMIT][GRAPH_LIMIT];
+    Element distance[GRAPH_LIMIT]; 
+    bool visited[GRAPH_LIMIT];
+    unsigned short nodeCount;
 };
 
-#endif // _PROJECT_H //! #Change this to the right one
+//#endif // _PROJECT_H //! #Change this to the right one
