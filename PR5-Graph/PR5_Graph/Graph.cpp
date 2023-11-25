@@ -61,7 +61,8 @@ Graph::Graph(const string fileName = "data.dat") {
 *** RETURN : None ***
 ********************************************************************/
 Graph::~Graph() {
-    // Implementation will go here
+    // Ummm, does nothing
+    // Thats what Dr Gamradt wrote in the project document
 }
 
 /********************************************************************
@@ -74,44 +75,8 @@ Graph::~Graph() {
 *** RETURN : None ***
 ********************************************************************/
 void Graph::dijkstra(unsigned short startingVertex) {
-    // // Adjust for 0-based indexing
-    // startingVertex--;
-
-    // // Initialize all distances as infinite and visited array as false
-    // for (unsigned short i = 0; i < nodeCount; ++i) {
-    //     distance[i] = USHRT_MAX;
-    //     visited[i] = false;
-    // }
-
-    // // Distance of the source vertex from itself is always 0
-    // distance[startingVertex] = 0;
-
-    // for (unsigned short count = 0; count < nodeCount - 1; ++count) {
-    //     // Pick the minimum distance vertex from the set of vertices not yet processed
-    //     unsigned short minDistance = USHRT_MAX, u = 0;
-
-    //     for (unsigned short v = 0; v < nodeCount; ++v) {
-    //         if (!visited[v] && distance[v] <= minDistance) {
-    //             minDistance = distance[v];
-    //             u = v;
-    //         }
-    //     }
-
-    //     // Mark the picked vertex as processed
-    //     visited[u] = true;
-
-    //     // Update distance value of the adjacent vertices of the picked vertex
-    //     for (unsigned short v = 0; v < nodeCount; ++v) {
-    //         // Update distance[v] only if it's not in visited, there is an edge from u to v,
-    //         // and total weight of path from startingVertex to v through u is smaller than current value of distance[v]
-    //         if (!visited[v] && cost[u][v] != USHRT_MAX && distance[u] + cost[u][v] < distance[v]) {
-    //             distance[v] = distance[u] + cost[u][v];
-    //         }
-    //     }
-    // }
-
     //Lets make sure that the starting vertex is valid. Like, its not greater than the number of nodes in the graph
-    //Coz if it is, its gonna throw an exception
+    //Coz if it isn't, its gonna throw an exception
     if (startingVertex >= nodeCount) {
         cerr << "Invalid starting vertex" << endl;
         throw invalid_argument("Invalid starting vertex");
@@ -161,38 +126,6 @@ void Graph::dijkstra(unsigned short startingVertex) {
 *** RETURN : None ***
 ********************************************************************/
 void Graph::setGraph(const string& fileName) {
-    // ifstream file(fileName);
-    
-    // if (!file) {
-    //     cerr << "Error opening file: " << fileName << endl;
-    //     return;
-    // }
-
-    // // Read the number of nodes
-    // file >> nodeCount;
-    // if (nodeCount > GRAPH_LIMIT) {
-    //     cerr << "Node count exceeds graph limit." << endl;
-    //     return;
-    // }
-
-    // // Initialize the cost matrix with USHRT_MAX
-    // for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
-    //     for (unsigned short j = 0; j < GRAPH_LIMIT; ++j) {
-    //         cost[i][j] = USHRT_MAX;
-    //     }
-    // }
-
-    // // Read the adjacency matrix from the file
-    // unsigned short tempCost;
-    // for (unsigned short i = 0; i < nodeCount; ++i) {
-    //     for (unsigned short j = 0; j < nodeCount; ++j) {
-    //         file >> tempCost;
-    //         cost[i][j] = (tempCost == 0 && i != j) ? USHRT_MAX : tempCost;
-    //     }
-    // }
-
-    // file.close();
-
     ifstream file(fileName);
 
     // Check if the file is successfully opened
