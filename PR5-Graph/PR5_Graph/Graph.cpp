@@ -31,7 +31,7 @@ using namespace std;
 *** IN/OUT ARGS : None ***
 *** RETURN : None ***
 ********************************************************************/
-Graph::Graph(const string fileName = "data.dat") {
+Graph::Graph(const string fileName) {
     graphPrivateConstructor(fileName);
 }
 
@@ -106,7 +106,10 @@ void Graph::graphPrivateConstructor(const string& fileName) {
 *** IN/OUT ARGS : None ***
 *** RETURN : None ***
 ********************************************************************/
-void Graph::dijkstraPrivate(unsigned short startingVertex = 0) {
+void Graph::dijkstraPrivate() {
+    //Ask the user for the starting vertex, and make sure that it is valid
+    unsigned short startingVertex = setStart();
+
     //Lets make sure that the starting vertex is valid. Like, its not greater than the number of nodes in the graph
     //Coz if it isn't, its gonna throw an exception
     if (startingVertex >= nodeCount) {
