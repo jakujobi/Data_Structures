@@ -296,7 +296,16 @@ unsigned short Graph::setStart() const {
 *** RETURN : None ***
 ********************************************************************/
 void Graph::view() const {
-    // Implementation will go here
+    for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
+        cout << "Distance[" << i << "] = ";
+        if (i == startingNode) {
+            cout << "0"; // Distance to the start node itself is always 0
+        } else {
+            cout << ((distance[i] == USHRT_MAX) ? "65535" : to_string(distance[i]));
+            // Display 65535 for unreachable nodes, otherwise display the distance
+        }
+        cout << endl; // Each distance on a separate line for clarity
+    }
 }
 
 /********************************************************************
