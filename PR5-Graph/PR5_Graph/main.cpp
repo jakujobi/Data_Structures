@@ -2,8 +2,8 @@
 
 //!_______________________________________________________________
 /********************************************************************
-*** NAME : John Doe                                            ***
-*** CLASS : CSc 300 - DATA STRUCTURES                           ***
+*** NAME : John Akujobi                                        ***
+*** CLASS : CSc 300 - DATA STRUCTURES                          ***
 *** ASSIGNMENT : 5                                             ***
 *** DUE DATE : 11-29-23                                        ***
 *** INSTRUCTOR : GAMRADT                                       ***

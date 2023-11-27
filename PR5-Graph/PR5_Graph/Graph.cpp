@@ -1,11 +1,11 @@
 //!_______________________________________________________________
 //Graph.cpp
 /********************************************************************
-*** NAME : Your Name ***
-*** CLASS : CSc 300 ***
-*** ASSIGNMENT : 5 ***
-*** DUE DATE : 11-29-23 ***
-*** INSTRUCTOR : GAMRADT ***
+*** NAME : JOHN AKUJOBI                                         *** 
+*** CLASS : CSC 300 - DATA STRUCTURES                           *** 
+*** ASSIGNMENT : 5                                              ***
+*** DUE DATE : 11-29-23                                         ***
+*** INSTRUCTOR : GAMRADT                                        ***
 *********************************************************************
 *** DESCRIPTION : This implementation file defines the functions for the
 *** Graph ADT. It includes methods for graph creation, Dijkstra's algorithm,

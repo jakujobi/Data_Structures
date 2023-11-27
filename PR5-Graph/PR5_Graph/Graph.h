@@ -3,16 +3,16 @@
 /******************************************************************** 
 *** NAME : JOHN AKUJOBI                                         *** 
 *** CLASS : CSC 300 - DATA STRUCTURES                           *** 
-*** ASSIGNMENT : Assignment //!# - ###############              *** 
-*** DUE DATE : //!                                               *** 
+*** ASSIGNMENT : Assignment 5                                   *** 
+*** DUE DATE : 11-29-23                                         *** 
 *** INSTRUCTOR : GAMRADT                                        *** 
 *********************************************************************/
 /********************************************************************* 
-*** DESCRIPTION : ///**
+*** DESCRIPTION : ***
 *** This ADT represents a Graph data structure, which is a collection of vertices and edges.
 *** The supported operations are:
 ***  - Constructor: Creates a new Graph object.
-***  - Destructor: Destroys the Graph object and frees up memory.
+***  - Destructor: Does nothing, but is supposed to destroy the Graph object and frees up memory.
 ***  - Dijkstra's Algorithm: Finds the shortest path between two vertices in the Graph.
 *********************************************************************/
 
