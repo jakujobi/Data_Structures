@@ -32,7 +32,8 @@ using namespace std;
 *** RETURN : None ***
 ********************************************************************/
 Graph::Graph(const string fileName) {
-    graphPrivateConstructor(fileName);
+    // Call setGraph to initialize the graph with data from the file
+    setGraph(fileName);
 }
 
 /********************************************************************
@@ -70,37 +71,9 @@ void Graph::dijkstra() {
 //!______________________________________________________________________________________________________________________________________
 
 /********************************************************************
-*** FUNCTION graphPrivateConstructor ***
-*********************************************************************
-*** DESCRIPTION : Initializes the Graph object. This function is ***
-*** called by the Graph constructor to set up the initial state  ***
-*** of the Graph object, including initializing arrays and       ***
-*** loading graph data from a file.                              ***
-*** INPUT ARGS : const string& fileName - The name of the file   ***
-*** containing graph data.                                       ***
-*** OUTPUT ARGS : None                                           ***
-*** IN/OUT ARGS : None                                           ***
-*** RETURN : None                                                ***
-********************************************************************/
-void Graph::graphPrivateConstructor(const string& fileName) {
-    // Initialize member variables, such as setting all distances to USHRT_MAX
-    // and all visited flags to false
-    for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
-        distance[i] = USHRT_MAX;
-        visited[i] = false;
-        for (unsigned short j = 0; j < GRAPH_LIMIT; ++j) {
-            cost[i][j] = USHRT_MAX;
-        }
-    }
-
-    // Call setGraph to initialize the graph with data from the file
-    setGraph(fileName);
-}
-
-/********************************************************************
 *** FUNCTION dijkstra ***
 *********************************************************************
-*** DESCRIPTION : Performs Dijkstra's algorithm on the graph to find the shortest path. ***
+*** DESCRIPTION : Performs Dijkstra's algorithm on the gstartingNoderaph to find the shortest path. ***
 *** INPUT ARGS : None ***
 *** OUTPUT ARGS : None ***
 *** IN/OUT ARGS : None ***
@@ -108,11 +81,13 @@ void Graph::graphPrivateConstructor(const string& fileName) {
 ********************************************************************/
 void Graph::dijkstraPrivate() {
     //Ask the user for the starting vertex, and make sure that it is valid
-    unsigned short startingVertex = setStart();
+    unsigned short startingNode;
 
+    do {
+    startingNode = setStart();
     //Lets make sure that the starting vertex is valid. Like, its not greater than the number of nodes in the graph
     //Coz if it isn't, its gonna throw an exception
-    if (startingVertex >= nodeCount) {
+    if (startingNode >= nodeCount) {
         cerr << "Invalid starting vertex" << endl;
         throw invalid_argument("Invalid starting vertex");
     }
@@ -123,7 +98,7 @@ void Graph::dijkstraPrivate() {
         distance[i] = USHRT_MAX;
         visited[i] = false;
     }
-    distance[startingVertex] = 0;   // Distance of the source vertex from itself is always 0
+    distance[startingNode] = 0;   // Distance of the source vertex from itself is always 0
 
     // Perform Dijkstra's algorithm and update the distance array
     for (unsigned short i = 0; i < nodeCount - 1; ++i) {
@@ -145,6 +120,7 @@ void Graph::dijkstraPrivate() {
             }
         }
     }
+    } while (restart ());
 }
 
 /********************************************************************
@@ -157,6 +133,7 @@ void Graph::dijkstraPrivate() {
 *** RETURN : None ***
 ********************************************************************/
 void Graph::setGraph(const string fileName = "data.dat") {
+    // Open the file
     ifstream file(fileName);
 
     // Check if the file is successfully opened
@@ -196,6 +173,7 @@ void Graph::setGraph(const string fileName = "data.dat") {
     }
 
     file.close();
+    return;
 }
 
 
@@ -226,7 +204,8 @@ void Graph::setVisited() {
 ********************************************************************/
 unsigned short Graph::setStart() const {
     unsigned short startNode;
-    while (true) {
+    bool validInput = false;
+    do {
         cout << "Enter the starting node (0 to " << nodeCount - 1 << "): ";
         cin >> startNode;
 
@@ -234,13 +213,12 @@ unsigned short Graph::setStart() const {
             cerr << "Invalid input. Please enter a node number between 0 and "
                 << nodeCount - 1 << "." << endl;
             cin.clear();
-            //cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cin.ignore();
-            continue;   //learned from one of my cs250 code
         }
-
-        break;
-    }
+        else {
+            validInput = true;
+        }
+    } while (validInput == false);
 
     return startNode; // Return the validated starting node
 }
@@ -255,10 +233,13 @@ unsigned short Graph::setStart() const {
 *** RETURN : None ***
 ********************************************************************/
 void Graph::view() const {
-    // Ensure that the function only reads from the Graph object and doesn't modify its state
+    // for(unsigned short i = 0; i < nodeCount; i++)
+    // {
+    //     cout << "Distance [" << i << "] = " << distance[i] << endl;
+    // }
 
     cout << "Shortest path distances from the start node:" << endl;
-    for (unsigned short i = 0; i < GRAPH_LIMIT; ++i) {
+    for (unsigned short i = 0; i < nodeCount; ++i) {
         cout << "Distance[" << i << "] = ";
         if (distance[i] == USHRT_MAX) {
             cout << "Infinity"; // No path to this node or distance is not calculated
@@ -281,18 +262,38 @@ void Graph::view() const {
 *** IN/OUT ARGS : None ***
 *** RETURN : bool - True if the user wishes to run the algorithm again, false otherwise. ***
 ********************************************************************/
+// bool Graph::restart() const {
+//     char choice;
+//     cout << "Do you want to run Dijkstra's algorithm again? (Y/N): ";
+//     cin >> choice;
+
+//     // Validate user input
+//     if (tolower(choice) == 'y') {
+//         return true; // User wants to run the algorithm again
+//     } else if (tolower(choice) == 'n') {
+//         return false; // User does not want to run the algorithm again
+//     } else {
+//         cerr << "Invalid input. Please enter 'Y' for yes or 'N' for no." << endl;
+//         return restart(); // Recursively call restart to handle invalid inputs
+//     }
+// }
+
 bool Graph::restart() const {
     char choice;
-    cout << "Do you want to run Dijkstra's algorithm again? (Y/N): ";
-    cin >> choice;
+    while (true) { // Loop until a valid input is received
+        cout << "Do you want to run Dijkstra's algorithm again? (Y/N): ";
+        cin >> choice;
 
-    // Validate user input
-    if (tolower(choice) == 'y') {
-        return true; // User wants to run the algorithm again
-    } else if (tolower(choice) == 'n') {
-        return false; // User does not want to run the algorithm again
-    } else {
-        cerr << "Invalid input. Please enter 'Y' for yes or 'N' for no." << endl;
-        return restart(); // Recursively call restart to handle invalid inputs
+        if (tolower(choice) == 'y') {
+            return true; // User wants to run the algorithm again
+        } else if (tolower(choice) == 'n') {
+            return false; // User does not want to run the algorithm again
+        } else {
+            cerr << "Invalid input. Please enter 'Y' for yes or 'N' for no." << endl;
+            // Clear the input buffer to remove invalid input
+            cin.clear();
+            //cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.ignore();
+        }
     }
 }
