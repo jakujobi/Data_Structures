@@ -204,7 +204,7 @@ void Graph::setVisited() {
 ********************************************************************/
 unsigned short Graph::setStart() const {
     unsigned short startNode;
-    bool validInput = false;
+    bool validInput = false; 
     do {
         cout << "Enter the starting node (0 to " << nodeCount - 1 << "): ";
         cin >> startNode;
