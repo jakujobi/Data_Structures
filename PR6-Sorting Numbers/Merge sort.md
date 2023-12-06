@@ -9,6 +9,7 @@ Clearly and neatly show and label all work
 
 43   -   12       32       20       14       39       21       28       48    //Split into 8 lists
 
+
 43       12       32       20       14       39       21       28       48    //Split into 9 lists (Spliting stops here since all lists are each a size of 1)
 
 
