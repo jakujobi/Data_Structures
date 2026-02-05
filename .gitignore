@@ -1,0 +1,28 @@
+# Build artifacts
+*.o
+*.obj
+*.exe
+output
+a.out
+
+# IDE/Editor files
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# C++ compiled files
+*.out
+*.app
