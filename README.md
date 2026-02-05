@@ -34,6 +34,7 @@ Data_Structures/
 ```
 
 Each C++ project follows a three-file architecture:
+
 1. **Header file (.h)** - Public interface and documentation
 2. **Implementation file (.cpp)** - Function implementations
 3. **Main driver (main.cpp)** - Test cases and usage examples
@@ -45,11 +46,13 @@ For detailed architecture information, see [docs/ARCHITECTURE.md](docs/ARCHITECT
 ### Prerequisites
 
 **For C++ projects:**
+
 - GCC/G++ compiler with C++11 support
 - GNU Make (optional but recommended)
 - Linux, macOS, or Windows with MinGW/WSL
 
 **For Python projects:**
+
 - Python 3.x
 
 ### Build and Run
@@ -86,6 +89,7 @@ make
 ```
 
 **Expected output:**
+
 ```
 List contents: 
 
@@ -193,6 +197,7 @@ print(sorted_list)  # [12, 14, 20, 21, 28, 32, 39, 43, 48]
 ### Build Settings
 
 All C++ projects use the following compilation flags:
+
 - **Standard:** `-std=c++11`
 - **Compiler:** `g++`
 
@@ -202,13 +207,13 @@ Modify the `Makefile` in each project directory to change build settings.
 
 Each data structure uses a typedef for flexibility:
 
-| Project | Element Type | Location |
-|---------|-------------|----------|
-| List (PR1) | `float` | [List.h:23](PR1-Abstract-Data-Type/List.h#L23) |
-| Stack (PR2) | `string` | [Stack.h:29](PR2-Stack/Stack.h#L29) |
-| Queue (PR3) | `int` | [Queue.h:18](PR3-Queue/Queue.h#L18) |
-| BST (PR4) | `int` | [BST.h:21](PR4-BST/PR4_BST/BST.h#L21) |
-| Graph (PR5) | `unsigned short` | [Graph.h:64](PR5-Graph/PR5_Graph/Graph.h#L64) |
+| Project     | Element Type       | Location                                    |
+| ----------- | ------------------ | ------------------------------------------- |
+| List (PR1)  | `float`          | [List.h:23](PR1-Abstract-Data-Type/List.h#L23) |
+| Stack (PR2) | `string`         | [Stack.h:29](PR2-Stack/Stack.h#L29)            |
+| Queue (PR3) | `int`            | [Queue.h:18](PR3-Queue/Queue.h#L18)            |
+| BST (PR4)   | `int`            | [BST.h:21](PR4-BST/PR4_BST/BST.h#L21)          |
+| Graph (PR5) | `unsigned short` | [Graph.h:64](PR5-Graph/PR5_Graph/Graph.h#L64)  |
 
 To change the data type, modify the `typedef` declaration in the respective header file.
 
@@ -243,16 +248,8 @@ All code follows the documentation requirements specified in [Documentation Requ
 - Clear variable naming
 - Proper encapsulation (public/private)
 
-## Project Status
-
-**Status:** ✅ Completed (Academic Project)
-
-All six assignments are complete and verified to work correctly:
-- ✅ All C++ projects compile without errors
-- ✅ All test programs execute successfully
-- ✅ Python sorting algorithms verified
-
 This is an academic portfolio project. Future enhancements could include:
+
 - Additional data structures (Red-Black Tree, Heap, Hash Table)
 - Unit testing framework integration (Google Test)
 - Performance benchmarking suite
@@ -263,6 +260,7 @@ This is an academic portfolio project. Future enhancements could include:
 This repository showcases foundational computer science and software engineering skills:
 
 ### Data Structures Knowledge
+
 - **Abstract Data Types (ADTs)** - Proper encapsulation and interface design ([All .h files](./))
 - **Memory Management** - Manual memory allocation/deallocation in linked structures ([List.cpp](PR1-Abstract-Data-Type/List.cpp), [BST.cpp](PR4-BST/PR4_BST/BST.cpp))
 - **Dynamic Arrays** - Automatic resizing and capacity management ([Stack.cpp](PR2-Stack/Stack.cpp))
@@ -270,18 +268,21 @@ This repository showcases foundational computer science and software engineering
 - **Graph Algorithms** - Dijkstra's shortest path implementation ([Graph.cpp](PR5-Graph/PR5_Graph/Graph.cpp))
 
 ### C++ Proficiency
+
 - **OOP Principles** - Classes, constructors, destructors, copy constructors
 - **Resource Management** - Proper cleanup in destructors, copy operations
 - **Header/Implementation Separation** - Professional code organization
 - **Const Correctness** - Appropriate use of `const` methods and parameters
 
 ### Software Engineering Practices
+
 - **Documentation Standards** - Extensive inline documentation following academic standards ([Documentation Requirements.md](Documentation%20Requirements.md))
 - **Build Automation** - Makefile-based build system ([Example Makefile](PR1-Abstract-Data-Type/Makefile))
 - **Code Organization** - Modular design with clear separation of concerns
 - **Testing** - Comprehensive test drivers for each implementation
 
 ### Algorithm Implementation
+
 - **Sorting Algorithms** - Merge sort with divide-and-conquer approach ([Merge sort V2 Verbose.py](PR6-Sorting%20Numbers/Merge%20sort%20V2%20Verbose.py))
 - **Search Algorithms** - Binary search tree operations
 - **Graph Algorithms** - Dijkstra's shortest path
@@ -289,6 +290,7 @@ This repository showcases foundational computer science and software engineering
 ## Contributing
 
 This is an academic portfolio project. While it's not actively seeking contributions, you're welcome to:
+
 - Fork the repository for educational purposes
 - Use as reference for learning data structures
 - Report issues or suggest improvements via GitHub Issues
@@ -304,6 +306,7 @@ For detailed development environment setup, testing procedures, and project stru
 This project is licensed under the **GNU General Public License v3.0** - see the [LICENSE](LICENSE) file for details.
 
 ### Summary of GPL-3.0:
+
 - ✅ Commercial use allowed
 - ✅ Modification allowed
 - ✅ Distribution allowed
@@ -314,13 +317,14 @@ This project is licensed under the **GNU General Public License v3.0** - see the
 
 ## Credits and Acknowledgements
 
-**Author:** John Akujobi  
-**Course:** CSC 300 - Data Structures  
-**Institution:** South Dakota State University  
-**Instructor:** Ken Gamradt  
+**Author:** John Akujobi
+**Course:** CSC 300 - Data Structures
+**Institution:** South Dakota State University
+**Instructor:** Ken Gamradt
 **Academic Year:** Fall 2023
 
 ### Assignment Completion Timeline:
+
 - PR1 (List ADT): Due 09-25-23
 - PR2 (Stack): Due 10-06-23
 - PR3 (Queue): Due 10-18-23
